@@ -1,1 +1,1 @@
-# Sathya-Coating
+# Sathya Coating
