@@ -64,7 +64,7 @@
         <li>
             <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-file-earmark-person"></i></div>
-                <div class="menu-title">About Section</div>
+                <div class="menu-title">About</div>
             </a>
             <ul>
                 <li>

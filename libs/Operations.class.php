@@ -57,6 +57,82 @@ class Operations
         $result = $conn->query($sql);
         return $result ? $result->fetch_assoc() : null;
     }
+
+    public static function getGallery($conn)
+    {
+        $sql = "SELECT * FROM `gallery` ORDER BY `created_at` ASC";
+        $result = $conn->query($sql);
+        return iterator_to_array($result);
+    }
+
+    public static function getContact($conn)
+    {
+        $sql = "SELECT * FROM `contact` ORDER BY `created_at` ASC";
+        $result = $conn->query($sql);
+        return iterator_to_array($result);
+    }
+    public static function getContactus($conn)
+    {
+        $getID = $_GET['edit_id'];
+        $sql = "SELECT * FROM `contact` WHERE `id` = '$getID'";
+        $result = $conn->query($sql);
+        return $result ? $result->fetch_assoc() : null;
+    }
+    public static function getSocial($conn)
+    {
+        $sql = "SELECT * FROM `social` ORDER BY `created_at` ASC";
+        $result = $conn->query($sql);
+        return iterator_to_array($result);
+    }
+    public static function getMedia($conn)
+    {
+        $getID = $_GET['edit_id'];
+        $sql = "SELECT * FROM `social` WHERE `id` = '$getID'";
+        $result = $conn->query($sql);
+        return $result ? $result->fetch_assoc() : null;
+    }
+    
+    public static function getReviews($conn)
+    {
+        $sql = "SELECT * FROM `review` ORDER BY `created_at` ASC";
+        $result = $conn->query($sql);
+        return iterator_to_array($result);
+    }
+    public static function getReview($conn)
+    {
+        $getID = $_GET['edit_id'];
+        $sql = "SELECT * FROM `review` WHERE `id` = '$getID'";
+        $result = $conn->query($sql);
+        return $result ? $result->fetch_assoc() : null;
+    }
+
+    public static function getAboutUs($conn)
+    {
+        $sql = "SELECT * FROM `aboutus` ORDER BY `created_at` ASC";
+        $result = $conn->query($sql);
+        return iterator_to_array($result);
+    }
+    public static function getAbout($conn)
+    {
+        $getID = $_GET['edit_id'];
+        $sql = "SELECT * FROM `aboutus` WHERE `id` = '$getID'";
+        $result = $conn->query($sql);
+        return $result ? $result->fetch_assoc() : null;
+    }
+
+    public static function getHomeAboutUs($conn)
+    {
+        $sql = "SELECT * FROM `home-about` ORDER BY `created_at` ASC";
+        $result = $conn->query($sql);
+        return iterator_to_array($result);
+    }
+    public static function getHomeAbout($conn)
+    {
+        $getID = $_GET['edit_id'];
+        $sql = "SELECT * FROM `home-about` WHERE `id` = '$getID'";
+        $result = $conn->query($sql);
+        return $result ? $result->fetch_assoc() : null;
+    }
 }
 
 ?>
