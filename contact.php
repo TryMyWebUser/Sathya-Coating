@@ -141,7 +141,7 @@
                                 <!-- Contact Info Content Start -->
                                 <div class="contact-info-content">
                                     <h3>phone number</h3>
-                                    <p><a href="tel:+919994924939" style="color: #fff;">+91 999 492 4939</a></p>
+                                    <p><a href="tel:+919994924939" style="color: #000;">+91 999 492 4939</a></p>
                                 </div>
                                 <!-- Contact Info Content End -->
                             </div>
@@ -158,7 +158,7 @@
                                 <!-- Contact Info Content Start -->
                                 <div class="contact-info-content">
                                     <h3>e-mail support</h3>
-                                    <p><a href="mailto:info@sathyacoatings.com" style="color: #fff;">info@sathyacoatings.com</a></p>
+                                    <p><a href="mailto:info@sathyacoatings.com" style="color: #000;">info@sathyacoatings.com</a></p>
                                 </div>
                                 <!-- Contact Info Content End -->
                             </div>

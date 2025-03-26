@@ -342,18 +342,6 @@
                         </div>
                         <!-- image gallery end -->
                     </div>
-
-                    <div class="col-lg-4 col-6">
-                        <!-- image gallery start -->
-                        <div class="photo-gallery wow fadeInUp" data-wow-delay="1s" data-cursor-text="View">
-                            <a href="assets/images/gallery/26.jpg">
-                                <figure class="image-anime">
-                                    <img src="assets/images/gallery/26.jpg" alt="" />
-                                </figure>
-                            </a>
-                        </div>
-                        <!-- image gallery end -->
-                    </div>
                 </div>
                 <!-- gallery section end -->
             </div>
