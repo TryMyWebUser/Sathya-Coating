@@ -24,129 +24,209 @@ class User
         return "Invalid Username and Password";
     }
 
-    public static function setCategory($page, $cate)
+    public static function setPageCategory($page, $title)
     {
         $conn = Database::getConnect();
 
         // Insert data into database
-        $sql = "INSERT INTO `category` (`page`, `category`, `created_at`)
-                VALUES ('$page', '$cate', NOW())";
+        $sql = "INSERT INTO `cate` (`page`, `category`, `created_at`)
+                VALUES ('$page', '$title', NOW())";
 
         if ($conn->query($sql)) {
-            header("Location: viewCate.php");
+            header("Location: addCate.php");
             exit;
         } else {
             return "Error occurred while saving data: " . $conn->error;
         }
     }
-    public static function updateCategory($getID, $page, $cate, $conn)
+    public static function updatePageCategory($getID, $page, $title, $conn)
     {
         // Update data into database
-        $sql = "UPDATE `category` SET `page` = '$page', `category` = '$cate', `created_at` = NOW() WHERE `id` = '$getID'";
+        $sql = "UPDATE `cate` SET `page` = '$page', `category` = '$title', `created_at` = NOW() WHERE `id` = '$getID'";
 
         if ($conn->query($sql)) {
-            header("Location: viewCate.php");
+            header("Location: viewPS.php");
             exit;
         } else {
             return "Error occurred while saving data: " . $conn->error;
         }
     }
-
-    public static function setProducts($title, $dec, $img, $cate)
+    public static function setCategory($cate, $category)
     {
         $conn = Database::getConnect();
-        $targetDir = "../uploads/Products/"; // Define your upload directory
-        
-        if (!is_dir($targetDir)) {
-            // Create directory with proper permissions
-            mkdir($targetDir, 0777, true);
-        }
-
-        $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
-
-        // Required file uploads
-        $requiredFiles = [
-            'img' => $_FILES["img"]
-        ];
-
-        foreach ($requiredFiles as $key => $file) {
-            $fileName = basename($file["name"]);
-            $filePath = $targetDir . $fileName;
-            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-            
-            if (!in_array($fileType, $allowImageTypes) || !move_uploaded_file($file["tmp_name"], $filePath)) {
-                return "Error uploading required file: $key.";
-            }
-            $$key = $filePath; // Dynamically assign variable with directory
-        }
 
         // Insert data into database
-        $sql = "INSERT INTO `products` (`img`, `title`, `dec`, `category`, `created_at`) 
-                VALUES ('$filePath', '$title', '$dec', '$cate', NOW())";
+        $sql = "INSERT INTO `ps-category` (`cate`, `category`, `created_at`)
+                VALUES ('$cate', '$category', NOW())";
 
         if ($conn->query($sql)) {
-            header("Location: viewProduct.php");
+            header("Location: viewPS.php");
             exit;
         } else {
             return "Error occurred while saving data: " . $conn->error;
         }
     }
-    public static function updateProducts($title, $dec, $img, $cate, $getID, $conn)
+    public static function updateCategory($getID, $cate, $category, $conn)
     {
-        $targetDir = "../uploads/Products/"; // Define your upload directory
-        
-        if (!is_dir($targetDir)) {
-            // Create directory with proper permissions
-            mkdir($targetDir, 0777, true);
+        // Update data into database
+        $sql = "UPDATE `ps-category` SET `cate` = '$cate', `category` = '$category', `created_at` = NOW() WHERE `id` = '$getID'";
+
+        if ($conn->query($sql)) {
+            header("Location: viewPS.php");
+            exit;
+        } else {
+            return "Error occurred while saving data: " . $conn->error;
+        }
+    }
+
+    public static function setPS($title, $dec, $file, $img, $cate, $conn)
+    {
+        // $conn = Database::getConnect();
+
+        // Define upload directories
+        $targetDirImg = "../uploads/Products_Services/"; // Image directory
+        $targetDirPDF = "../uploads/Products_Services/PDF/"; // PDF directory
+
+        // Create directories if not exist
+        if (!is_dir($targetDirImg)) {
+            mkdir($targetDirImg, 0777, true);
         }
 
-        $qry = $conn->query("SELECT * FROM `products` WHERE `id` = '$getID'")->fetch_array();
+        if (!is_dir($targetDirPDF)) {
+            mkdir($targetDirPDF, 0777, true);
+        }
 
         $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
+        $allowPDFTypes = ['pdf'];
 
-        // Check if a file was uploaded
+        $imgPath = ""; // Default empty if no image is uploaded
+        $filePath = ""; // Default empty if no PDF is uploaded
+
+        // Check and upload image if provided
         if (!empty($_FILES["img"]["name"])) {
-            $fileName = basename($_FILES["img"]["name"]);
-            $filePath = $targetDir . $fileName;
-            $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+            $imgName = basename($_FILES["img"]["name"]);
+            $imgPath = $targetDirImg . $imgName;
+            $imgType = pathinfo($imgName, PATHINFO_EXTENSION);
 
-            // Validate file type
-            if (!in_array($fileType, $allowImageTypes)) {
+            // Validate image
+            if (!in_array($imgType, $allowImageTypes)) {
+                return "Error: Only JPG, JPEG, PNG, and GIF files are allowed for images.";
+            }
+
+            if (!move_uploaded_file($_FILES["img"]["tmp_name"], $imgPath)) {
+                return "Error: Failed to upload image.";
+            }
+        }
+
+        // Check and upload PDF if provided
+        if (!empty($_FILES["file"]["name"])) {
+            $fileName = basename($_FILES["file"]["name"]);
+            $filePath = $targetDirPDF . $fileName;
+            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+
+            // Validate PDF
+            if (!in_array($fileType, $allowPDFTypes)) {
+                return "Error: Only PDF files are allowed.";
+            }
+
+            if (!move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
+                return "Error: Failed to upload PDF.";
+            }
+        }
+
+        // Insert data into the database
+        $sql = "INSERT INTO `product-service`(`title`, `dec`, `file`, `img`, `category`, `created_at`) 
+                VALUES ('$title', '$dec', '$filePath', '$imgPath', '$cate', NOW())";
+
+        if ($conn->query($sql)) {
+            header("Location: viewPS.php");
+            exit;
+        } else {
+            return "Error occurred while saving data: " . $conn->error;
+        }
+    }
+    public static function updatePS($title, $dec, $file, $img, $cate, $getID, $conn)
+    {
+        // $conn = Database::getConnect();
+
+        // Define upload directories
+        $targetDirImg = "../uploads/Products_Services/"; // Image directory
+        $targetDirPDF = "../uploads/Products_Services/PDF/"; // PDF directory
+
+        // Create directories if not exist
+        if (!is_dir($targetDirImg)) {
+            mkdir($targetDirImg, 0777, true);
+        }
+
+        if (!is_dir($targetDirPDF)) {
+            mkdir($targetDirPDF, 0777, true);
+        }
+
+        // Fetch existing data
+        $qry = $conn->query("SELECT * FROM `product-service` WHERE `id` = '$getID'")->fetch_array();
+
+        $imgPath = $qry['img'];  // Default to existing image if no new one
+        $filePath = $qry['file']; // Default to existing PDF if no new one
+
+        $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
+        $allowPDFTypes = ['pdf'];
+
+        // Check if a new image is uploaded
+        if (!empty($_FILES["img"]["name"])) {
+            $imgName = basename($_FILES["img"]["name"]);
+            $imgPath = $targetDirImg . $imgName;
+            $imgType = strtolower(pathinfo($imgName, PATHINFO_EXTENSION));
+
+            // Validate image type
+            if (!in_array($imgType, $allowImageTypes)) {
                 return "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
             }
 
-            // Validate file size (e.g., 5MB max)
-            if ($_FILES["img"]["size"] > 5 * 1024 * 1024) {
-                return "Error: File size exceeds the maximum limit of 5MB.";
+            // Move new image and delete old one if it exists
+            if (move_uploaded_file($_FILES["img"]["tmp_name"], $imgPath)) {
+                if (!empty($qry['img']) && file_exists($qry['img'])) {
+                    unlink($qry['img']);
+                }
+            } else {
+                return "Error: Failed to upload new image.";
             }
-
-            // Move uploaded file to target directory
-            if (!move_uploaded_file($_FILES["img"]["tmp_name"], $filePath)) {
-                return "Error: Failed to upload file.";
-            }
-
-            // Delete old image if it exists
-            if (!empty($qry['img']) && file_exists($qry['img'])) {
-                unlink($qry['img']);
-            }
-
-            // Update database with new image path
-            $sql = "UPDATE `products` SET `img` = ?, `title` = ?, `dec` = ?, `category` = ?, `created_at` = NOW() WHERE `id` = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssssi", $filePath, $title, $dec, $cate, $getID);
-        } else {
-            // Update database without changing the image
-            $sql = "UPDATE `products` SET `title` = ?, `dec` = ?, `category` = ?, `created_at` = NOW() WHERE `id` = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssi", $title, $dec, $cate, $getID);
         }
+
+        // Check if a new PDF file is uploaded
+        if (!empty($_FILES["file"]["name"])) {
+            $fileName = basename($_FILES["file"]["name"]);
+            $filePath = $targetDirPDF . $fileName;
+            $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            // Validate PDF type
+            if (!in_array($fileType, $allowPDFTypes)) {
+                return "Error: Only PDF files are allowed.";
+            }
+
+            // Move new PDF and delete old one if it exists
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
+                if (!empty($qry['file']) && file_exists($qry['file'])) {
+                    unlink($qry['file']);
+                }
+            } else {
+                return "Error: Failed to upload new PDF file.";
+            }
+        }
+
+        // Prepare SQL query
+        $sql = "UPDATE `product-service` 
+                SET `title` = ?, `dec` = ?, `file` = ?, `img` = ?, `category` = ?, `created_at` = NOW() 
+                WHERE `id` = ?";
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssssi", $title, $dec, $filePath, $imgPath, $cate, $getID);
 
         // Execute the statement
         if ($stmt->execute()) {
-            header("Location: viewProduct.php");
+            header("Location: viewPS.php");
             exit;
         } else {
-            return "Error occurred while saving data: " . $stmt->error;
+            return "Error occurred while updating data: " . $stmt->error;
         }
     }
 
@@ -678,6 +758,194 @@ class User
             exit;
         } else {
             return "Error occurred while updating data: " . $stmt->error;
+        }
+    }
+
+    public static function setFeateres($title, $dec, $points, $img)
+    {
+        $conn = Database::getConnect();
+        $targetDir = "../uploads/Home_Feateres/"; // Define your upload directory
+        
+        if (!is_dir($targetDir)) {
+            // Create directory with proper permissions
+            mkdir($targetDir, 0777, true);
+        }
+
+        $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
+
+        // Required file uploads
+        $requiredFiles = [
+            'img' => $_FILES["img"]
+        ];
+
+        foreach ($requiredFiles as $key => $file) {
+            $fileName = basename($file["name"]);
+            $filePath = $targetDir . $fileName;
+            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+            
+            if (!in_array($fileType, $allowImageTypes) || !move_uploaded_file($file["tmp_name"], $filePath)) {
+                return "Error uploading required file: $key.";
+            }
+            $$key = $filePath; // Dynamically assign variable with directory
+        }
+
+        // Insert data into database
+        $sql = "INSERT INTO `home-feateres`(`title`, `dec`, `points`, `img`, `created_at`)
+                VALUES ('$title', '$dec', '$points', '$filePath', NOW())";
+
+        if ($conn->query($sql)) {
+            header("Location: viewFeateres.php");
+            exit;
+        } else {
+            return "Error occurred while saving data: " . $conn->error;
+        }
+    }
+    public static function updateFeateres($getID, $title, $dec, $points, $img)
+    {
+        $conn = Database::getConnect();
+        $targetDir = "../uploads/Home_Feateres/"; // Define your upload directory
+        
+        if (!is_dir($targetDir)) {
+            // Create directory with proper permissions
+            mkdir($targetDir, 0777, true);
+        }
+
+        $qry = $conn->query("SELECT * FROM `home-feateres` WHERE `id` = '$getID'")->fetch_array();
+
+        $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
+
+        // Check if a file was uploaded
+        if (!empty($_FILES["img"]["name"])) {
+            $fileName = basename($_FILES["img"]["name"]);
+            $filePath = $targetDir . $fileName;
+            $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            // Validate file type
+            if (!in_array($fileType, $allowImageTypes)) {
+                return "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
+            }
+
+            // Validate file size (e.g., 5MB max)
+            if ($_FILES["img"]["size"] > 5 * 1024 * 1024) {
+                return "Error: File size exceeds the maximum limit of 5MB.";
+            }
+
+            // Move uploaded file to target directory
+            if (!move_uploaded_file($_FILES["img"]["tmp_name"], $filePath)) {
+                return "Error: Failed to upload file.";
+            }
+
+            // Delete old image if it exists
+            if (!empty($qry['img']) && file_exists($qry['img'])) {
+                unlink($qry['img']);
+            }
+
+            // Update database with new image path
+            $sql = "UPDATE `home-feateres` SET `title` = '$title', `dec` = '$dec', `points` = '$points', `img` = '$filePath', `created_at` = NOW() WHERE `id` = '$getID'";
+        } else {
+            // Update database without changing the image
+            $sql = "UPDATE `home-feateres` SET `title` = '$title', `dec` = '$dec', `points` = '$points', `created_at` = NOW() WHERE `id` = '$getID'";
+        }
+
+        if ($conn->query($sql)) {
+            header("Location: viewFeateres.php");
+            exit;
+        } else {
+            return "Error occurred while saving data: " . $conn->error;
+        }
+    }
+
+    public static function setHomeHero($img, $header, $title, $dec, $b1, $b2)
+    {
+        $conn = Database::getConnect();
+        $targetDir = "../uploads/Home_Hero/"; // Define your upload directory
+        
+        if (!is_dir($targetDir)) {
+            // Create directory with proper permissions
+            mkdir($targetDir, 0777, true);
+        }
+
+        $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
+
+        // Required file uploads
+        $requiredFiles = [
+            'img' => $_FILES["img"]
+        ];
+
+        foreach ($requiredFiles as $key => $file) {
+            $fileName = basename($file["name"]);
+            $filePath = $targetDir . $fileName;
+            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+            
+            if (!in_array($fileType, $allowImageTypes) || !move_uploaded_file($file["tmp_name"], $filePath)) {
+                return "Error uploading required file: $key.";
+            }
+            $$key = $filePath; // Dynamically assign variable with directory
+        }
+
+        // Insert data into database
+        $sql = "INSERT INTO `home-hero`(`img`, `header`, `title`, `dec`, `button_text1`, `button_text2`, `created_at`)
+                VALUES ('$filePath', '$header', '$title', '$dec', '$b1', '$b2', NOW())";
+
+        if ($conn->query($sql)) {
+            header("Location: viewHero.php");
+            exit;
+        } else {
+            return "Error occurred while saving data: " . $conn->error;
+        }
+    }
+    public static function updateHomeHero($getID, $img, $header, $title, $dec, $b1, $b2)
+    {
+        $conn = Database::getConnect();
+        $targetDir = "../uploads/Home_Hero/"; // Define your upload directory
+        
+        if (!is_dir($targetDir)) {
+            // Create directory with proper permissions
+            mkdir($targetDir, 0777, true);
+        }
+
+        $qry = $conn->query("SELECT * FROM `home-hero` WHERE `id` = '$getID'")->fetch_array();
+
+        $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
+
+        // Check if a file was uploaded
+        if (!empty($_FILES["img"]["name"])) {
+            $fileName = basename($_FILES["img"]["name"]);
+            $filePath = $targetDir . $fileName;
+            $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            // Validate file type
+            if (!in_array($fileType, $allowImageTypes)) {
+                return "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
+            }
+
+            // Validate file size (e.g., 5MB max)
+            if ($_FILES["img"]["size"] > 5 * 1024 * 1024) {
+                return "Error: File size exceeds the maximum limit of 5MB.";
+            }
+
+            // Move uploaded file to target directory
+            if (!move_uploaded_file($_FILES["img"]["tmp_name"], $filePath)) {
+                return "Error: Failed to upload file.";
+            }
+
+            // Delete old image if it exists
+            if (!empty($qry['img']) && file_exists($qry['img'])) {
+                unlink($qry['img']);
+            }
+
+            // Update database with new image path
+            $sql = "UPDATE `home-hero` SET `img` = '$filePath', `header` = '$header', `title` = '$title', `dec` = '$dec', `button_text1` = '$b1', `button_text2` = '$b2', `created_at` = NOW() WHERE `id` = '$getID'";
+        } else {
+            // Update database without changing the image
+            $sql = "UPDATE `home-hero` SET `header` = '$header', `title` = '$title', `dec` = '$dec', `button_text1` = '$b1', `button_text2` = '$b2', `created_at` = NOW() WHERE `id` = '$getID'";
+        }
+
+        if ($conn->query($sql)) {
+            header("Location: viewHero.php");
+            exit;
+        } else {
+            return "Error occurred while saving data: " . $conn->error;
         }
     }
 

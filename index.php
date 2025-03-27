@@ -17,31 +17,85 @@
         <?php include "temp/header.php" ?>
 
         <!-- Hero Section Start -->
-        <div class="hero parallaxie">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-10">
-                        <!-- Hero Content Start -->
-                        <div class="hero-content">
-                            <!-- Section Title Start -->
-                            <div class="section-title">
-                                <h3 class="wow fadeInUp">Sathya Coatings</h3>
-                                <h1 class="text-anime-style-2" data-cursor="-opaque">Specialty Formulations For Specific Requirements</h1>
-                                <!-- <p class="wow fadeInUp" data-wow-delay="0.2s">We specialize in creating personalized, functional, and stylish interiors that reflect your unique vision.</p> -->
+        <div class="hero hero-slider-layout">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <!-- Hero Slide Start -->
+                    <div class="swiper-slide">
+                        <div class="hero-slide">
+                            <!-- Slider Image Start -->
+                            <div class="hero-slider-image">
+                                <img src="assets/images/hero-bg.jpg" alt="not found">
                             </div>
-                            <!-- Section Title End -->
+                            <!-- Slider Image End -->
 
-                            <!-- Hero Button Start -->
-                            <div class="hero-btn wow fadeInUp" data-wow-delay="0.4s">
-                                <a href="projects.php" class="btn-default">View Our Projects</a>
-                                <a href="services.php" class="btn-default btn-highlighted">Turn Key Services</a>
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-10">
+                                        <!-- Hero Content Start -->
+                                        <div class="hero-content">
+                                            <!-- Section Title Start -->
+                                            <div class="section-title">
+                                                <h3 class="wow fadeInUp">Sathya Coatings</h3>
+                                                <h1 class="text-anime-style-2" data-cursor="-opaque">Specialty Formulations For Specific Requirements</h1>
+                                                <!-- <p class="wow fadeInUp" data-wow-delay="0.2s">We specialize in creating personalized, functional, and stylish interiors that reflect your unique vision.</p> -->
+                                            </div>
+                                            <!-- Section Title End -->
+                    
+                                            <!-- Hero Button Start -->
+                                            <div class="hero-btn wow fadeInUp" data-wow-delay="0.4s">
+                                                <a href="projects.php" class="btn-default">View Our Products</a>
+                                                <a href="services.php" class="btn-default btn-highlighted">Turn Key Services</a>
+                                            </div>
+                                            <!-- Hero Button End -->
+                                        </div>
+                                        <!-- Hero Content End -->
+                                    </div>
+                                </div>
                             </div>
-                            <!-- Hero Button End -->
                         </div>
-                        <!-- Hero Content End -->
                     </div>
+                    <!-- Hero Slide End -->
+
+                    <!-- Hero Slide Start -->
+                    <div class="swiper-slide">
+                        <div class="hero-slide">
+                            <!-- Slider Image Start -->
+                            <div class="hero-slider-image">
+                                <img src="assets/images/page-header-bg.jpg" alt="not found">
+                            </div>
+                            <!-- Slider Image End -->
+
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-10">
+                                        <!-- Hero Content Start -->
+                                        <div class="hero-content">
+                                            <!-- Section Title Start -->
+                                            <div class="section-title">
+                                                <h3 class="wow fadeInUp">Sathya Coatings</h3>
+                                                <h1 class="text-anime-style-2" data-cursor="-opaque">Specialty Formulations For Specific Requirements</h1>
+                                                <!-- <p class="wow fadeInUp" data-wow-delay="0.2s">We specialize in creating personalized, functional, and stylish interiors that reflect your unique vision.</p> -->
+                                            </div>
+                                            <!-- Section Title End -->
+                    
+                                            <!-- Hero Button Start -->
+                                            <div class="hero-btn wow fadeInUp" data-wow-delay="0.4s">
+                                                <a href="projects.php" class="btn-default">View Our Products</a>
+                                                <a href="services.php" class="btn-default btn-highlighted">Turn Key Services</a>
+                                            </div>
+                                            <!-- Hero Button End -->
+                                        </div>
+                                        <!-- Hero Content End -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Hero Slide End -->
                 </div>
-            </div>
+                <div class="hero-pagination"></div>
+            </div>        
         </div>
         <!-- Hero Section End -->
 

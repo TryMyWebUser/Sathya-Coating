@@ -83,10 +83,13 @@
             </a>
             <ul>
                 <li>
-                    <a href="addServices.php"><i class="bi bi-arrow-right-short"></i>Add Services</a>
+                    <a href="addCate.php"><i class="bi bi-arrow-right-short"></i>Add Category</a>
                 </li>
                 <li>
-                    <a href="viewServices.pgp"><i class="bi bi-arrow-right-short"></i>View Services</a>
+                    <a href="addPS.php"><i class="bi bi-arrow-right-short"></i>Add Services</a>
+                </li>
+                <li>
+                    <a href="viewPS.php"><i class="bi bi-arrow-right-short"></i>View Services</a>
                 </li>
             </ul>
         </li>
@@ -98,10 +101,13 @@
             </a>
             <ul>
                 <li>
-                    <a href="addProducts.php"><i class="bi bi-arrow-right-short"></i>Add Products</a>
+                    <a href="addCate.php"><i class="bi bi-arrow-right-short"></i>Add Category</a>
                 </li>
                 <li>
-                    <a href="viewProducts.php"><i class="bi bi-arrow-right-short"></i>View Products</a>
+                    <a href="addPS.php"><i class="bi bi-arrow-right-short"></i>Add Products</a>
+                </li>
+                <li>
+                    <a href="viewPS.php"><i class="bi bi-arrow-right-short"></i>View Products</a>
                 </li>
             </ul>
         </li>
