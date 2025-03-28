@@ -1,3 +1,5 @@
+<?php include "libs/load.php" ?>
+
 <!-- Preloader Start -->
 <div class="preloader">
     <div class="loading-container">
@@ -27,18 +29,51 @@
                             <li class="nav-item submenu">
                                 <a class="nav-link" href="#">Turn Key Services</a>
                                 <ul>
+                                    <?php
+                                        $conn = Database::getConnect();
+                                        $cate = Operations::getCCate($conn);
+                                        foreach ($cate as $c) {
+                                            if ($c['page'] === 'service') {
+                                    ?>
                                     <li class="nav-item submenu">
-                                        <a class="nav-link" href="#">Anti-Corrosive Coating Solutions For Steel</a>
+                                        <a class="nav-link" href="#"><?= $c['category'] ?></a>
                                         <ul>
+                                            <?php
+                                                $sub = Operations::getCategorySub($c['category'], $conn);
+                                                foreach ($sub as $s) {
+                                            ?>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="services.php">For Cui- Corrosion Under Insulation</a>
+                                                <a class="nav-link" href="services.php?data=<?= $s['category'] ?>"><?= $s['category'] ?></a>
                                             </li>
+                                            <?php } ?>
                                         </ul>
                                     </li>
+                                    <?php } } ?>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="projects.php">Projects</a>
+                            <li class="nav-item submenu">
+                                <a class="nav-link" href="projects.php">Products</a>
+                                <ul>
+                                    <?php
+                                        $cate = Operations::getCCate($conn);
+                                        foreach ($cate as $c) {
+                                            if ($c['page'] === 'product') {
+                                    ?>
+                                    <li class="nav-item submenu">
+                                        <a class="nav-link" href="#"><?= $c['category'] ?></a>
+                                        <ul>
+                                            <?php
+                                                $sub = Operations::getCategorySub($c['category'], $conn);
+                                                foreach ($sub as $s) {
+                                            ?>
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="projects.php?data=<?= $s['category'] ?>"><?= $s['category'] ?></a>
+                                            </li>
+                                            <?php } ?>
+                                        </ul>
+                                    </li>
+                                    <?php } } ?>
+                                </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.php">Gallery</a></li>
                             <li class="nav-item"><a class="nav-link" href="testimonials.php">Testimonials</a></li>

@@ -20,18 +20,19 @@
                                 <div class="footer-social-link-title">
                                     <h3>follow our socials</h3>
                                 </div>
+                                <?php $social = Operations::getSocials($conn); ?>
                                 <ul>
                                     <li>
-                                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="<?= $social['facebook'] ?>"><i class="fa-brands fa-facebook-f"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                        <a href="<?= $social['instagram'] ?>"><i class="fa-brands fa-instagram"></i></a>
                                     </li>
                                     <li>
-                                        <a href="https://wa.me/+919994924939"><i class="fa-brands fa-whatsapp"></i></a>
+                                        <a href="https://wa.me/<?= $social['whatsapp'] ?>"><i class="fa-brands fa-whatsapp"></i></a>
                                     </li>
                                     <li>
-                                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                                        <a href="<?= $social['youtube'] ?>"><i class="fa-brands fa-youtube"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -49,7 +50,6 @@
                     <ul>
                         <!-- <li><a href="index.php">Home</a></li> -->
                         <li><a href="about.php">About Us</a></li>
-                        <li><a href="project.php">Projects</a></li>
                         <li><a href="gallery.php">Gallery</a></li>
                         <li><a href="testimonials.php">Testimonials</a></li>
                         <li><a href="contact.php">Contact Us</a></li>
@@ -71,6 +71,7 @@
                 </div>
             </div> -->
 
+            <?php $con = Operations::getCContactus($conn); ?>
             <div class="col-lg-3 col-md-6">
                 <!-- Footer Contact Box Start -->
                 <div class="footer-contact-box footer-links">
@@ -81,7 +82,12 @@
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <div class="footer-contact-content">
-                            <p><a href="tel:+919994924939" style="color: #fff;">+91 999 492 4939</a></p>
+                            <?php
+                                $num = explode(',', $con['number']);
+                                foreach ($num as $value) {
+                            ?>
+                            <p><a href="tel:+91<?= $value ?>" style="color: #fff;">+91 <?= $value ?></a></p>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- Footer Contact Item End -->
@@ -92,7 +98,12 @@
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <div class="footer-contact-content">
-                            <p><a href="mailto:info@sathyacoatings.com" style="color: #fff;">info@sathyacoatings.com</a></p>
+                            <?php
+                                $mail = explode(',', $con['email']);
+                                foreach ($mail as $value) {
+                            ?>
+                            <p><a href="mailto:<?= $value ?>" style="color: #fff;"><?= $value ?></a></p>
+                            <?php } ?>
                         </div>
                     </div>
                     <!-- Footer Contact Item End -->
@@ -103,7 +114,7 @@
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
                         <div class="footer-contact-content">
-                            <p>221 Chinnammal Nagar, Edayarpalayam, Vadavalli Road, Coimbatore - 641 041</p>
+                            <p><?= $con['address'] ?></p>
                         </div>
                     </div>
                     <!-- Footer Contact Item End -->
@@ -117,7 +128,7 @@
                     <h3>Reach Us</h3>
 
                     <div class="footer-newsletter-form">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15664.06905436395!2d76.90328148019931!3d11.037331424830995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85f4bb5a4f5bf%3A0xfa7b3ce40a4d4439!2sSathya%20Group%20Office!5e0!3m2!1sen!2sin!4v1710327539924!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <?= $con['map'] ?>
                     </div>
                 </div>
                 <!-- Footer Newsletter Form End -->

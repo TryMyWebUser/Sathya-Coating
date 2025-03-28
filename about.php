@@ -39,6 +39,11 @@
         <!-- Page Header End -->
 
         <!-- About Us Section Start -->
+        <?php
+            $about = Operations::getAboutUs($conn);
+            if (!empty($about)) {
+                foreach ($about as $ab) {
+        ?>
         <div class="about-us page-about-us">
             <div class="container">
                 <div class="row align-items-center">
@@ -48,7 +53,7 @@
                             <!-- About Image 1 Start -->
                             <div class="about-img-1">
                                 <figure class="image-anime reveal">
-                                    <img src="assets/images/about-img-1.jpg" alt="" />
+                                    <img src="assets/<?= $ab['img1'] ?>" alt="" />
                                 </figure>
                             </div>
                             <!-- About Image 1 End -->
@@ -56,24 +61,19 @@
                             <!-- About Image 2 Start -->
                             <div class="about-img-2">
                                 <figure class="image-anime reveal">
-                                    <img src="assets/images/about-img-2.jpg" alt="" />
+                                    <img src="assets/<?= $ab['img2'] ?>" alt="" />
                                 </figure>
 
                                 <!-- Feedback Counter Start -->
                                 <div class="experience-counter">
-                                    <h3><span class="counter">30</span>+</h3>
-                                    <p>Years of experience</p>
+                                    <?php $exp = explode('+', $ab['exp']); ?>
+                                    <h3><span class="counter"><?= $exp[0] ?></span>+</h3>
+                                    <p><?= $exp[1] ?></p>
                                 </div>
                                 <!-- Feedback Counter End -->
                             </div>
                             <!-- About Image 2 End -->
 
-                            <!-- Feedback Counter Start -->
-                            <!-- <div class="feedback-counter">
-                                <p><span class="counter">95</span>%</p>
-                                <h3>positive feedback</h3>
-                            </div> -->
-                            <!-- Feedback Counter End -->
                         </div>
                         <!-- About Us Images End -->
                     </div>
@@ -84,9 +84,9 @@
                             <!-- Section Title Start -->
                             <div class="section-title">
                                 <h3 class="wow fadeInUp">about us</h3>
-                                <h2 class="text-anime-style-2" data-cursor="-opaque">Sathya <span>Coatings</span></h2>
+                                <h2 class="text-anime-style-2" data-cursor="-opaque"><?= $ab['title'] ?></h2>
                                 <p class="wow fadeInUp" data-wow-delay="0.2s">
-                                Welcome to Sathya coatings – 29+ years of excellence in speciality coating formulations for specific requirements. An iso 14001:2015, iso 45001:2018, iso 9001:2015 certified manufacturer & customised formulation provider for specific requirements in the field of high-performance protective coatings, speciality linings, flow enhancement coatings & floor coatings of various kinds. We are providing customised tailor-made coatings/chemicals to a wide array of customer base since 1995. We manufacture specialised coatings for different types of substrates catering to a wide range of challenging requirements.
+                                <?= $ab['dec'] ?>
                                 </p>
                             </div>
                             <!-- Section Title End -->
@@ -98,9 +98,12 @@
                                     <!-- About Us Content List Start -->
                                     <div class="about-us-content-list wow fadeInUp" data-wow-delay="0.4s">
                                         <ul>
-                                            <li>Guaranteed Solutions</li>
-                                            <li>Comprehensive & Exhaustive Product Range</li>
-                                            <li>Speciality Products & Services at affordable cost</li>
+                                            <?php
+                                                $point = explode(',', $ab['points']);
+                                                foreach ($point as $value) {
+                                            ?>
+                                            <li><?= $value ?></li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                     <!-- About Us Content List End -->
@@ -121,61 +124,8 @@
                 </div>
             </div>
         </div>
+        <?php } } else { echo "<p>About Content Not Found</p>"; } ?>
         <!-- About Us Section End -->
-
-        <!-- Vision Mission Start -->
-        <!-- <div class="vision-mission">
-            <div class="container">
-                <div class="row section-row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="section-title dark-section">
-                            <h3 class="wow fadeInUp">vision mission</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque">A behind the scenes look at <span>our agency</span></h2>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <div class="section-title-content dark-section">
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Our portfolio showcases a diverse range of projects, from beautifully crafted residential spaces functional and stylish commercial interiors</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="vision-mission-box">
-                            <div class="vision-mission-item wow fadeInUp">
-                                <div class="icon-box">
-                                    <img src="assets/images/icon-our-vision.svg" alt="" />
-                                </div>
-                                <div class="vision-mission-content">
-                                    <h3>our vision</h3>
-                                    <p>
-                                        Our vision is rooted in the belief that thoughtfully designed spaces can transform lives, enhancing how people feel, work, and connect. We are committed to creating interiors that reflect our clients'
-                                        unique identities, blending comfort, functionality, and beauty. By combining timeless design with modern innovations, we craft spaces that are visually stunning and practical.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="vision-mission-item wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="icon-box">
-                                    <img src="assets/images/icon-our-mission.svg" alt="" />
-                                </div>
-                                <div class="vision-mission-content">
-                                    <h3>our mission</h3>
-                                    <p>
-                                        Our mission is to deliver exceptional interior designs that enhance the quality of life by prioritizing comfort, functionality, and aesthetics. We aim to create space that are not only visually
-                                        appealing but also tailored to meet the specific needs and desires of our client By staying true to design innovation, we ensure that every project reflects the perfect balance between style and
-                                        purpose.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Vision Mission End -->
 
         <?php include "temp/footer.php" ?>
 

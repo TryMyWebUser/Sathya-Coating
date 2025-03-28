@@ -57,57 +57,36 @@
         <div class="page-testimonials py-5">
             <div class="container">
                 <div class="row">
-
-                    <!-- Testimonial Item Start -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="testimonial-item p-4 shadow rounded bg-light">
-                            <!-- Testimonial Image Start -->
-                            <div class="testimonial-image text-center mb-3">
-                                <img src="assets/images/team-1.jpg" alt="User 1" class="rounded-circle" width="80" height="80">
-                            </div>
-                            <!-- Testimonial Image End -->
-
-                            <!-- Testimonial Content Start -->
-                            <div class="testimonial-content text-center">
-                                <p class="mb-3">"Sathya coatings provided us with high-performance formulations that exceeded our expectations!"</p>
-                                <h5 class="mb-1">John Doe</h5>
-                                <small class="text-muted">CEO, ABC Industries</small>
-                            </div>
-                            <!-- Testimonial Content End -->
-                        </div>
-                    </div>
-                    <!-- Testimonial Item End -->
-
+                    <?php
+                        $test = Operations::getReviews($conn);
+                        if (!empty($test)) {
+                            foreach ($test as $t) {
+                    ?>
                     <!-- Testimonial Item Start -->
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="testimonial-item p-4 shadow rounded bg-light">
                             <div class="testimonial-image text-center mb-3">
-                                <img src="assets/images/team-2.jpg" alt="User 2" class="rounded-circle" width="80" height="80">
+                                <?php if ($t['image'] === 'assets/images/user.png') { ?>
+                                    <img src="Dashboard/<?= $t['image'] ?>" alt="User 2" class="rounded-circle" width="80" height="80">
+                                <?php } else {?>
+                                <img src="assets/<?= $t['image'] ?>" alt="User 2" class="rounded-circle" width="80" height="80">
+                                <?php } ?>
                             </div>
                             <div class="testimonial-content text-center">
-                                <p class="mb-3">"Their customised solutions helped us enhance the durability of our products effectively."</p>
-                                <h5 class="mb-1">Jane Smith</h5>
-                                <small class="text-muted">Project Manager, XYZ Corp</small>
+                                <p class="mb-3"><?= $t['review'] ?></p>
+                                <h5 class="mb-1"><?= $t['name'] ?></h5>
+                                <small class="text-muted">
+                                    <?php for ($i = 0; $i < $t['rating']; $i++) { ?>
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="color: #ffc107;" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                        </svg>
+                                    <?php } ?>
+                                </small>
                             </div>
                         </div>
                     </div>
                     <!-- Testimonial Item End -->
-
-                    <!-- Testimonial Item Start -->
-                    <div class="col-lg-4 col-md-6 mb-4">
-                        <div class="testimonial-item p-4 shadow rounded bg-light">
-                            <div class="testimonial-image text-center mb-3">
-                                <img src="assets/images/team-3.jpg" alt="User 3" class="rounded-circle" width="80" height="80">
-                            </div>
-                            <div class="testimonial-content text-center">
-                                <p class="mb-3">"Excellent customer service and superior formulations. Highly recommended!"</p>
-                                <h5 class="mb-1">Michael Lee</h5>
-                                <small class="text-muted">Director, LMN Enterprises</small>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial Item End -->
-
+                    <?php } } else { echo "<p>Testimonials Not Found</p>"; } ?>
                 </div>
             </div>
         </div>

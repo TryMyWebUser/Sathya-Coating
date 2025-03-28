@@ -54,7 +54,7 @@
                                     <p class="p-0 m-0">Category: <?= $ps['category'] ?></p>
                                     <!-- Download Button -->
                                     <?php if (!empty($ps['file'])) { ?>
-                                    <a href="<?= $ps['file'] ?>" type="button" class="btn btn-outline-primary" download="file.pdf">
+                                    <a href="<?= $ps['file'] ?>" type="button" class="btn btn-outline-primary" download="<?= $ps['file'] ?>">
                                         <button type="button">Download File</button>
                                     </a>
                                     <?php } ?>

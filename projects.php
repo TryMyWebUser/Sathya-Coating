@@ -42,7 +42,11 @@
         <div class="page-services">
             <div class="container">
                 <div class="row">
-
+                    <?php
+                        $data = Operations::getFPS($conn);
+                        if (!empty($data)) {
+                            foreach ($data as $item) {
+                    ?>
                     <div class="col-lg-4 col-md-6">
                         <!-- Service Item Start -->
                         <div class="service-item wow fadeInUp">
@@ -50,28 +54,41 @@
                             <div class="service-image">
                                 <a href="#" data-cursor-text="View">
                                     <figure class="image-anime">
+                                        <?php if (!empty($item['img'])) { ?>
+                                        <img src="assets/<?= $item['img'] ?>" alt="" />
+                                        <?php } else { ?>
                                         <img src="assets/images/service-1.jpg" alt="" />
+                                        <?php } ?>
                                     </figure>
                                 </a>
                             </div>
                             <!-- Service Image End -->
 
                             <!-- Service Button Start -->
+                            <?php if (!empty($item['file'])) { ?>
                             <div class="service-btn">
-                                <a href="#"><img src="assets/images/arrow-white.svg" alt="" /></a>
+                                <a href="<?= $item['file'] ?>" type="button" download="<?= $item['file'] ?>">
+                                    <button type="button">
+                                        <img src="assets/images/arrow-white.svg" alt="" />
+                                    </button>
+                                </a>
                             </div>
+                            <?php } ?>
                             <!-- Service Button End -->
 
                             <!-- Service Content Start -->
                             <div class="service-content">
-                                <h3><a href="#">Sathya - epa range of formulations</a></h3>
-                                <p>We offer wide range of adhesive formulations for specific applications like structural bonding, repairing of concrete, Anchor bolt fixing, metal to composite bonding, metal to metal bonding, glass bonding, stone/tile fixing, honeycomb repair etc..</p>
+                                <h3><a href="#"><?= $item['title'] ?></a></h3>
+                                <p><?= $item['dec'] ?></p>
                             </div>
                             <!-- Service Content End -->
                         </div>
                         <!-- Service Item End -->
                     </div>
-
+                    <?php
+                            }
+                        } else { echo "<p>Products Not Found</p>"; }
+                    ?>
                 </div>
             </div>
         </div>

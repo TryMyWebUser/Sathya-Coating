@@ -105,6 +105,7 @@
         <!-- Page Contact Us End -->
 
         <!-- Google Map Section Start -->
+        <?php $con = Operations::getCContactus($conn); ?>
         <div class="google-map">
             <div class="container">
                 <div class="row">
@@ -120,7 +121,7 @@
                     <div class="col-lg-12">
                         <!-- Google Map IFrame Start -->
                         <div class="google-map-iframe">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15664.06905436395!2d76.90328148019931!3d11.037331424830995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba85f4bb5a4f5bf%3A0xfa7b3ce40a4d4439!2sSathya%20Group%20Office!5e0!3m2!1sen!2sin!4v1710327539924!5m2!1sen!2sin" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <?= $con['map'] ?>
                         </div>
                         <!-- Google Map IFrame End -->
                     </div>
@@ -141,7 +142,12 @@
                                 <!-- Contact Info Content Start -->
                                 <div class="contact-info-content">
                                     <h3>phone number</h3>
-                                    <p><a href="tel:+919994924939" style="color: #000;">+91 999 492 4939</a></p>
+                                    <?php
+                                        $num = explode(',', $con['number']);
+                                        foreach ($num as $value) {
+                                    ?>
+                                    <p><a href="tel:+91<?= $value ?>" style="color: #000;">+91 <?= $value ?></a></p>
+                                    <?php } ?>
                                 </div>
                                 <!-- Contact Info Content End -->
                             </div>
@@ -158,7 +164,12 @@
                                 <!-- Contact Info Content Start -->
                                 <div class="contact-info-content">
                                     <h3>e-mail support</h3>
-                                    <p><a href="mailto:info@sathyacoatings.com" style="color: #000;">info@sathyacoatings.com</a></p>
+                                    <?php
+                                        $mail = explode(',', $con['email']);
+                                        foreach ($mail as $value) {
+                                    ?>
+                                    <p><a href="mailto:<?= $value ?>" style="color: #000;"><?= $value ?></a></p>
+                                    <?php } ?>
                                 </div>
                                 <!-- Contact Info Content End -->
                             </div>
@@ -175,7 +186,7 @@
                                 <!-- Contact Info Content Start -->
                                 <div class="contact-info-content">
                                     <h3>Adderss</h3>
-                                    <p>221 Chinnammal Nagar, Edayarpalayam, Vadavalli Road, Coimbatore - 641 041</p>
+                                    <p><?= $con['address'] ?></p>
                                 </div>
                                 <!-- Contact Info Content End -->
                             </div>
