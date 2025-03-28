@@ -29,10 +29,10 @@
     </head>
     <body>
         
-        <?php include "temp/header.php" ?>
+        <?php include "temp/header.php"; $hero = Operations::getBGHero($conn); ?>
 
         <!-- Page Header Start -->
-        <div class="page-header parallaxie">
+        <div class="page-header parallaxie" style="background-image: url('<?= $hero['img'] ?>');">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">

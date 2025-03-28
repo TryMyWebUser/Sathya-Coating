@@ -34,6 +34,20 @@
         </li>
         <li>
             <a href="javascript:;" class="has-arrow">
+                <div class="parent-icon"><i class="bi bi-distribute-vertical"></i></div>
+                <div class="menu-title">BG Hero All Page</div>
+            </a>
+            <ul>
+                <li>
+                    <a href="addBGHero.php"><i class="bi bi-arrow-right-short"></i>Add Hero</a>
+                </li>
+                <li>
+                    <a href="viewBGHero.php"><i class="bi bi-arrow-right-short"></i>View Hero</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="has-arrow">
                 <div class="parent-icon"><i class="bi bi-file-earmark-person"></i></div>
                 <div class="menu-title">About Section</div>
             </a>

@@ -13,9 +13,9 @@ class Database
             $password = "";
             $dbname = "sathya";
             // $server = "localhost";
-            // $username = "trymywebsites_sathya";
+            // $username = "trymywebsites_sathyadb";
             // $password = "sathya@2025";
-            // $dbname = "trymywebsites_sathya";
+            // $dbname = "trymywebsites_sathyad_b";
 
             // create connection
             $connection = new mysqli($server, $username, $password, $dbname);

@@ -10,9 +10,9 @@ if (isset($_GET['delete_id'])) {
     $sql = "DELETE FROM `contact` WHERE `id` = '$delete_id'";
     $result = $conn->query($sql);
     if ($result) {
-        header("Location: viewSocial.php");
+        header("Location: viewContact.php");
     } else {
-        header("Location: viewSocial.php?error=Failed to delete image");
+        header("Location: viewContact.php?error=Failed to delete image");
     }
 } 
 

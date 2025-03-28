@@ -179,11 +179,6 @@
                             <div class="why-choose-item-list">
                                 <!-- Why Choose Item Start -->
                                 <div class="why-choose-item wow fadeInUp" data-wow-delay="0.4s">
-                                    <!-- Icon Box Start -->
-                                    <div class="icon-box">
-                                        <img src="assets/<?= $f['img'] ?>" alt="" />
-                                    </div>
-                                    <!-- Icon Box End -->
 
                                     <!-- Why Choose Item Content Start -->
                                     <div class="about-us-content-list wow fadeInUp" data-wow-delay="0.4s">
@@ -212,7 +207,7 @@
                             <div class="why-choose-img-box-1s">
                                 <div class="why-choose-img-1">
                                     <figure class="image-anime reveal">
-                                        <img src="assets/images/why-choose-img-1.jpg" alt="" />
+                                        <img src="assets/<?= $f['img'] ?>" alt="" />
                                     </figure>
                                 </div>
                             </div>

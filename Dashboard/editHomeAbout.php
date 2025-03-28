@@ -13,6 +13,9 @@
 
     $error = "";
 
+    $conn = Database::getConnect();
+    $about = Operations::getHomeAbout($conn);
+    
     // Handle About Us form submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -27,12 +30,9 @@
             $point = $_POST['point'];
 
             // Call updateAboutUs to modify data
-            $error = User::updateHomeAboutUs($getID, $img1, $img2, $exp, $title, $dec, $point);
+            $error = User::updateHomeAboutUs($getID, $img1, $img2, $exp, $title, $dec, $point, $conn);
         }
     }
-
-    $conn = Database::getConnect();
-    $about = Operations::getHomeAbout($conn);
 
 ?>
 

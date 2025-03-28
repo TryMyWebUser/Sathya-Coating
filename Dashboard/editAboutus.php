@@ -13,6 +13,9 @@
 
     $error = "";
 
+    $conn = Database::getConnect();
+    $about = Operations::getAbout($conn);
+    
     // Handle About Us form submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -27,12 +30,9 @@
             $point = $_POST['point'];
 
             // Call updateAboutUs to modify data
-            $error = User::updateAboutUs($getID, $img1, $img2, $exp, $title, $dec, $point);
+            $error = User::updateAboutUs($getID, $img1, $img2, $exp, $title, $dec, $point, $conn);
         }
     }
-
-    $conn = Database::getConnect();
-    $about = Operations::getAbout($conn);
 
 ?>
 

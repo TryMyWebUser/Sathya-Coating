@@ -220,6 +220,13 @@ class Operations
         $result = $conn->query($sql);
         return $result ? $result->fetch_assoc() : null;
     }
+    
+    public static function getBGHero($conn)
+    {
+        $sql = "SELECT * FROM `bg-hero` ORDER BY `created_at` ASC";
+        $result = $conn->query($sql);
+        return $result ? $result->fetch_assoc() : null;
+    }
 }
 
 ?>
