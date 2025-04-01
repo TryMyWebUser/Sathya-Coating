@@ -63,28 +63,37 @@
                                     <hr />
                                     <form class="row g-3" method="POST" enctype="multipart/form-data">
                                         <div class="col-12">
-                                            <label class="form-label">Image 1</label>
+                                            <label class="form-label"><b>Image 1</b></label>
                                             <input type="file" name="img1" class="form-control" required/>
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Image 2</label>
+                                            <label class="form-label"><b>Image 2</b></label>
                                             <input type="file" name="img2" class="form-control" required/>
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Experience</label>
-                                            <input type="text" name="exp" class="form-control" required/>
+                                            <label class="form-label"><b>Experience</b></label>
+                                            <div class="quill-editor" data-name="exp"></div>
+                                            <input type="hidden" name="exp" required>
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Title</label>
-                                            <input type="text" name="title" class="form-control" required/>
+                                            <label class="form-label"><b>Title</b></label>
+                                            <div class="quill-editor" data-name="title"></div>
+                                            <input type="hidden" name="title" required>
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Description</label>
-                                            <textarea class="form-control" name="dec" rows="4" required></textarea>
+                                            <label class="form-label"><b>Description</b></label>
+                                            <div class="quill-editor" data-name="dec"></div>
+                                            <input type="hidden" name="dec" required>
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Points - Use (,)</label>
-                                            <textarea class="form-control" name="point" rows="3" required></textarea>
+                                            <label class="form-label"><b>Points - Use (,)</b></label>
+                                            <div class="quill-editor" data-name="point"></div>
+                                            <input type="hidden" name="point" required>
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">

@@ -56,19 +56,25 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label class="form-label">Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" required>
+                                        <label class="form-label"><b>Title</b></label>
+                                        <div class="quill-editor" data-name="title"></div>
+                                        <input type="hidden" name="title" required>
                                     </div>
+
                                     <div class="mb-3">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4" required></textarea>
+                                        <label class="form-label"><b>Description</b></label>
+                                        <div class="quill-editor" data-name="dec"></div>
+                                        <input type="hidden" name="dec" required>
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Points - Use (,)</label>
-                                        <input type="text" class="form-control" placeholder="Enter Points" name="points" required>
+                                        <label class="form-label"><b>Points - Use (,)</b></label>
+                                        <div class="quill-editor" data-name="points"></div>
+                                        <input type="hidden" name="points" required>
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Image Upload</label>
+                                        <label class="form-label"><b>Image Upload</b></label>
                                         <input type="file" name="img" class="form-control" required>
                                     </div>
                                     <div class="col-12">

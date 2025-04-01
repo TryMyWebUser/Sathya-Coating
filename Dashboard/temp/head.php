@@ -23,3 +23,10 @@
 <link href="assets/css/header-colors.css" rel="stylesheet" />
 
 <title>Sathya Coatings</title>
+
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<style>
+    .quill-editor {
+        height: 100px;
+    }
+</style>

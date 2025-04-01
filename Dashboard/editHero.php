@@ -62,29 +62,40 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label class="form-label">Slider Background Image Upload</label>
+                                        <label class="form-label"><b>Slider Background Image Upload</b></label>
                                         <input type="file" name="img" class="form-control">
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Header</label>
-                                        <input type="text" class="form-control" placeholder="Enter Header" name="header" value="<?= $hero['header'] ?>">
+                                        <label class="form-label"><b>Header</b></label>
+                                        <div class="quill-editor" data-name="header"><?= htmlspecialchars($hero['header']) ?></div>
+                                        <input type="hidden" name="header" value="<?= htmlspecialchars($hero['header']) ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $hero['title'] ?>">
+                                        <label class="form-label"><b>Title</b></label>
+                                        <div class="quill-editor" data-name="title"><?= htmlspecialchars($hero['title']) ?></div>
+                                        <input type="hidden" name="title" value="<?= htmlspecialchars($hero['title']) ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4"><?= $hero['dec'] ?></textarea>
+                                        <label class="form-label"><b>Description</b></label>
+                                        <div class="quill-editor" data-name="dec"><?= htmlspecialchars($hero['dec']) ?></div>
+                                        <input type="hidden" name="dec" value="<?= htmlspecialchars($hero['dec']) ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Button Text 1</label>
-                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b1" value="<?= $hero['button_text1'] ?>">
+                                        <label class="form-label"><b>Button Text 1</b></label>
+                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b1" 
+                                            value="<?= isset($hero['button_text1']) ? htmlspecialchars($hero['button_text1']) : '' ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Button Text 2</label>
-                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b2" value="<?= $hero['button_text2'] ?>">
+                                        <label class="form-label"><b>Button Text 2</b></label>
+                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b2" 
+                                            value="<?= isset($hero['button_text2']) ? htmlspecialchars($hero['button_text2']) : '' ?>">
                                     </div>
+
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
                                             <div class="ms-auto mt-3 mt-md-0">

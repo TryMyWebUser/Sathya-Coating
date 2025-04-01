@@ -60,19 +60,24 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
-                                        <label class="form-label">Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $HF['title'] ?>">
+                                        <label class="form-label"><b>Title</b></label>
+                                        <div class="quill-editor" data-name="title"><?= htmlspecialchars($HF['title']) ?></div>
+                                        <input type="hidden" name="title" value="<?= htmlspecialchars($HF['title']) ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4"><?= $HF['dec'] ?></textarea>
+                                        <label class="form-label"><b>Description</b></label>
+                                        <div class="quill-editor" data-name="dec"><?= htmlspecialchars($HF['dec']) ?></div>
+                                        <input type="hidden" name="dec" value="<?= htmlspecialchars($HF['dec']) ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Points - Use (,)</label>
-                                        <input type="text" class="form-control" placeholder="Enter Points" name="points" value="<?= $HF['points'] ?>">
+                                        <label class="form-label"><b>Points - Use (,)</b></label>
+                                        <input type="text" class="form-control" placeholder="Enter Points" name="points" value="<?= htmlspecialchars($HF['points']) ?>">
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Image Upload</label>
+                                        <label class="form-label"><b>Image Upload</b></label>
                                         <input type="file" name="img" class="form-control">
                                     </div>
                                     <div class="col-12">

@@ -70,30 +70,37 @@
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label class="form-label">Services Page Category (*)</label>
-                                        <select class="form-select" id="inlineFormCustomSelect" name="cate">
-                                            <option value="<?= $ps['category']; ?>">Select Category</option>
-                                            <?php
-                                                foreach ($category as $cate) {
-                                            ?>
-                                            <option value="<?= $cate['category'] ?>"><?= $cate['category'] ?></option>
+                                        <select class="form-select" id="inlineFormCustomSelect" name="cate" required>
+                                            <option value="">Select Category</option>
+                                            <?php foreach ($category as $cate) { ?>
+                                                <option value="<?= htmlspecialchars($cate['category']) ?>" 
+                                                    <?= ($cate['category'] == $ps['category']) ? 'selected' : '' ?>>
+                                                    <?= htmlspecialchars($cate['category']) ?>
+                                                </option>
                                             <?php } ?>
                                         </select>
                                     </div>
+
                                     <div class="mb-3">
                                         <label class="form-label">Background Image Upload (Optional)</label>
                                         <input type="file" name="img" class="form-control" accept=".jpg, .jpeg, .png, .gif">
                                     </div>
+
                                     <div class="mb-3">
                                         <label class="form-label">PDF Upload (Optional)</label>
                                         <input type="file" name="file" class="form-control" accept=".pdf">
                                     </div>
+
                                     <div class="mb-3">
                                         <label class="form-label">Title (*)</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $ps['title'] ?>">
+                                        <div class="quill-editor" data-name="title"><?= isset($ps['title']) ? htmlspecialchars($ps['title']) : '' ?></div>
+                                        <input type="hidden" name="title" value="<?= isset($ps['title']) ? htmlspecialchars($ps['title']) : '' ?>" required>
                                     </div>
+
                                     <div class="mb-3">
-                                    <label class="form-label">Description (*)</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4"><?= $ps['dec'] ?></textarea>
+                                        <label class="form-label">Description (*)</label>
+                                        <div class="quill-editor" data-name="dec"><?= isset($ps['dec']) ? htmlspecialchars($ps['dec']) : '' ?></div>
+                                        <input type="hidden" name="dec" value="<?= isset($ps['dec']) ? htmlspecialchars($ps['dec']) : '' ?>">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">

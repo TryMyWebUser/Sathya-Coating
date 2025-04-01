@@ -59,20 +59,24 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST">
                                     <div class="mb-3">
-                                        <label class="form-label">Select Category</label>
+                                        <label class="form-label"><b>Select Category</b></label>
                                         <select class="form-select" id="inlineFormCustomSelect" name="cate">
-                                            <option value="<?= $category['cate'] ?>">Choose Category...</option>
-                                            <?php
-                                                foreach ($cat as $cate) {
-                                            ?>
-                                            <option value="<?= $cate['category'] ?>"><?= $cate['category'] ?></option>
+                                            <option value="" disabled selected>Choose Category...</option>
+                                            <?php foreach ($cat as $cate) { ?>
+                                                <option value="<?= htmlspecialchars($cate['category']) ?>" 
+                                                    <?= ($cate['category'] == $category['cate']) ? 'selected' : '' ?>>
+                                                    <?= htmlspecialchars($cate['category']) ?>
+                                                </option>
                                             <?php } ?>
                                         </select>
                                     </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">Sub Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Sub Title" name="title" value="<?= $category['category'] ?>">
+                                        <label class="form-label"><b>Sub Title</b></label>
+                                        <div class="quill-editor" data-name="title"><?= isset($category['category']) ? htmlspecialchars($category['category']) : '' ?></div>
+                                        <input type="hidden" name="title" value="<?= isset($category['category']) ? htmlspecialchars($category['category']) : '' ?>">
                                     </div>
+
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
                                             <div class="ms-auto mt-3 mt-md-0">

@@ -76,20 +76,27 @@
                                             <input type="file" name="img2" class="form-control"/>
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">Experience</label>
-                                            <input type="text" name="exp" class="form-control" value="<?= $about['exp'] ?>"/>
+                                            <label class="form-label"><b>Experience</b></label>
+                                            <div class="quill-editor" data-name="exp"><?= $about['exp'] ?></div>
+                                            <input type="hidden" name="exp" value="<?= htmlspecialchars($about['exp']) ?>">
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Title</label>
-                                            <input type="text" name="title" class="form-control" value="<?= $about['title'] ?>"/>
+                                            <label class="form-label"><b>Title</b></label>
+                                            <div class="quill-editor" data-name="title"><?= $about['title'] ?></div>
+                                            <input type="hidden" name="title" value="<?= htmlspecialchars($about['title']) ?>">
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Description</label>
-                                            <textarea class="form-control" name="dec" rows="4"><?= $about['dec'] ?></textarea>
+                                            <label class="form-label"><b>Description</b></label>
+                                            <div class="quill-editor" data-name="dec"><?= $about['dec'] ?></div>
+                                            <input type="hidden" name="dec" value="<?= htmlspecialchars($about['dec']) ?>">
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Points - Use (,)</label>
-                                            <textarea class="form-control" name="point" rows="3"><?= $about['points'] ?></textarea>
+                                            <label class="form-label"><b>Points - Use (,)</b></label>
+                                            <div class="quill-editor" data-name="point"><?= $about['points'] ?></div>
+                                            <input type="hidden" name="point" value="<?= htmlspecialchars($about['points']) ?>">
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">

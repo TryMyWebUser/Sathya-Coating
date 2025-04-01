@@ -70,16 +70,19 @@
                                             <input type="text" name="map" class="form-control" value="<?= htmlspecialchars($contact['map']) ?>"/>
                                         </div>
                                         <div class="col-12">
-                                            <label class="form-label">Numbers - Use (,)</label>
-                                            <input type="text" name="number" class="form-control" value="<?= $contact['number'] ?>"/>
+                                            <label class="form-label"><b>Numbers - Use (,)</b></label>
+                                            <input type="text" name="number" class="form-control" value="<?= htmlspecialchars($contact['number']) ?>"/>
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Emails - Use (,)</label>
-                                            <input type="text" name="email" class="form-control" value="<?= $contact['email'] ?>"/>
+                                            <label class="form-label"><b>Emails - Use (,)</b></label>
+                                            <input type="text" name="email" class="form-control" value="<?= htmlspecialchars($contact['email']) ?>"/>
                                         </div>
+
                                         <div class="col-12">
-                                            <label class="form-label">Address - Use (&lt;br&gt; for next line print)</label>
-                                            <textarea class="form-control" name="address" rows="4" cols="4"><?= $contact['address'] ?></textarea>
+                                            <label class="form-label"><b>Address - Use (&lt;br&gt; for next line print)</b></label>
+                                            <div class="quill-editor" data-name="address"><?= htmlspecialchars($contact['address']) ?></div>
+                                            <input type="hidden" name="address" value="<?= htmlspecialchars($contact['address']) ?>">
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
