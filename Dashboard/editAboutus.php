@@ -93,10 +93,14 @@
                                             <input type="hidden" name="dec" value="<?= htmlspecialchars($about['dec']) ?>">
                                         </div>
 
-                                        <div class="col-12">
+                                        <!-- <div class="col-12">
                                             <label class="form-label"><b>Points - Use (,)</b></label>
-                                            <div class="quill-editor" data-name="point"><?= $about['points'] ?></div>
-                                            <input type="hidden" name="point" value="<?= htmlspecialchars($about['points']) ?>">
+                                            <div class="quill-editor" data-name="point">< ?= $about['points'] ?></div>
+                                            <input type="hidden" name="point" value="< ?= htmlspecialchars($about['points']) ?>">
+                                        </div> -->
+                                        <div class="col-12">
+                                            <label class="form-label">Points - Use (,)</label>
+                                            <input type="text" class="form-control" name="point" value="<?= htmlspecialchars($about['points']) ?>" placeholder="Enter points separated by commas">
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
