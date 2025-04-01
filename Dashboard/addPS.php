@@ -78,6 +78,7 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
+<<<<<<< HEAD
                                         <label class="form-label">Background Image Upload (Optional)</label>
                                         <input type="file" name="img" class="form-control" accept=".jpg, .jpeg, .png, .gif">
                                     </div>
@@ -92,6 +93,27 @@
                                     <div class="mb-3">
                                     <label class="form-label">Description (*)</label>
                                     <textarea class="form-control" name="dec" placeholder="Description" rows="4" required></textarea>
+=======
+                                        <label class="form-label"><b>Background Image Upload (Optional)</b></label>
+                                        <input type="file" name="img" class="form-control" accept=".jpg, .jpeg, .png, .gif">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>PDF Upload (Optional)</b></label>
+                                        <input type="file" name="file" class="form-control" accept=".pdf">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Title (*)</b></label>
+                                        <div class="quill-editor" data-name="title"></div>
+                                        <input type="hidden" name="title" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Description (*)</b></label>
+                                        <div class="quill-editor" data-name="dec"></div>
+                                        <input type="hidden" name="dec" required>
+>>>>>>> developer
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">

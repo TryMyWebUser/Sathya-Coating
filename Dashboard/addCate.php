@@ -72,8 +72,14 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
+<<<<<<< HEAD
                                         <label class="form-label">Title</label>
                                         <input type="text" class="form-control" placeholder="Enter Title" name="title" required>
+=======
+                                        <label class="form-label"><b>Title</b></label>
+                                        <div class="quill-editor" data-name="title"></div>
+                                        <input type="hidden" name="title" required>
+>>>>>>> developer
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
@@ -104,8 +110,14 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
+<<<<<<< HEAD
                                         <label class="form-label">Sub Title</label>
                                         <input type="text" class="form-control" placeholder="Enter Sub Title" name="title" required>
+=======
+                                        <label class="form-label"><b>Sub Title</b></label>
+                                        <div class="quill-editor" data-name="sub_title"></div>
+                                        <input type="hidden" name="sub_title" required>
+>>>>>>> developer
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
