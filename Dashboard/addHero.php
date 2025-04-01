@@ -58,6 +58,7 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
+<<<<<<< HEAD
                                         <label class="form-label">Slider Background Image Upload</label>
                                         <input type="file" name="img" class="form-control" required>
                                     </div>
@@ -81,12 +82,52 @@
                                         <label class="form-label">Button Text 2</label>
                                         <input type="text" class="form-control" placeholder="Enter Button Text" name="b2" required>
                                     </div>
+=======
+                                        <label class="form-label"><b>Slider Background Image Upload</b></label>
+                                        <input type="file" name="img" class="form-control" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Header</b></label>
+                                        <div class="quill-editor" data-name="header"></div>
+                                        <input type="hidden" name="header" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Title</b></label>
+                                        <div class="quill-editor" data-name="title"></div>
+                                        <input type="hidden" name="title" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Description</b></label>
+                                        <div class="quill-editor" data-name="dec"></div>
+                                        <input type="hidden" name="dec" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Button Text 1</b></label>
+                                        <div class="quill-editor" data-name="b1"></div>
+                                        <input type="hidden" name="b1" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label"><b>Button Text 2</b></label>
+                                        <div class="quill-editor" data-name="b2"></div>
+                                        <input type="hidden" name="b2" required>
+                                    </div>
+
+>>>>>>> developer
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
                                             <div class="ms-auto mt-3 mt-md-0">
                                                 <button type="submit" name="submit" class="btn btn-primary hstack gap-6">
+<<<<<<< HEAD
                                                     <i class="ti ti-send fs-4"></i>
                                                     Submit
+=======
+                                                    <i class="ti ti-send fs-4"></i> Submit
+>>>>>>> developer
                                                 </button>
                                             </div>
                                         </div>

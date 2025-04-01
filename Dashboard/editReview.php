@@ -71,7 +71,11 @@
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">Name</label>
+<<<<<<< HEAD
                                             <input type="text" name="name" class="form-control" value="<?= $review['name'] ?>"/>
+=======
+                                            <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($review['name']) ?>" />
+>>>>>>> developer
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">Rating</label>
@@ -79,7 +83,12 @@
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">Review</label>
+<<<<<<< HEAD
                                             <textarea class="form-control" name="review" rows="4" cols="4"><?= $review['review'] ?></textarea>
+=======
+                                            <div class="quill-editor" data-name="review"><?= isset($review['review']) ? htmlspecialchars($review['review']) : '' ?></div>
+                                            <input type="hidden" name="review" value="<?= isset($review['review']) ? htmlspecialchars($review['review']) : '' ?>">
+>>>>>>> developer
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">
