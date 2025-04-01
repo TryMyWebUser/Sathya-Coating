@@ -1,0 +1,9 @@
+[28-Mar-2025 06:03:06 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/trymywebsites/public_html/demo6.trymywebsites.com/index.php:1) in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/load.php on line 9
+[28-Mar-2025 06:03:06 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/trymywebsites/public_html/demo6.trymywebsites.com/index.php:1) in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/load.php on line 10
+[28-Mar-2025 23:28:34 UTC] PHP Warning:  Undefined array key "data" in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 75
+[31-Mar-2025 07:12:17 UTC] PHP Warning:  Undefined array key "data" in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 75
+[31-Mar-2025 08:43:44 UTC] PHP Warning:  Undefined array key "data" in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 75
+[31-Mar-2025 23:41:59 UTC] PHP Warning:  Undefined array key "data" in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 75
+[01-Apr-2025 01:18:47 UTC] PHP Warning:  Undefined array key "data" in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 75
+[01-Apr-2025 01:21:11 UTC] PHP Warning:  Undefined array key "data" in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 75
+[01-Apr-2025 01:21:16 UTC] PHP Warning:  Undefined array key "data" in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 75

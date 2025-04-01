@@ -1,0 +1,53 @@
+[28-Mar-2025 06:18:49 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'img1' cannot be null in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php:664
+Stack trace:
+#0 /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php(664): mysqli_stmt->execute()
+#1 /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/addAbout.php(28): User::setHomeAboutUs(Array, Array, '30+ Years Exper...', 'Sathya Coatings', 'Innovative form...', 'Specific Produc...')
+#2 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 664
+[28-Mar-2025 06:19:19 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'img1' cannot be null in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php:664
+Stack trace:
+#0 /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php(664): mysqli_stmt->execute()
+#1 /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/addAbout.php(28): User::setHomeAboutUs(Array, Array, '30+ Years Exper...', 'Sathya Coatings', 'Innovative form...', 'Specific Produc...')
+#2 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 664
+[28-Mar-2025 06:24:52 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Column 'img1' cannot be null in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php:664
+Stack trace:
+#0 /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php(664): mysqli_stmt->execute()
+#1 /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/addAbout.php(28): User::setHomeAboutUs(Array, Array, '30+ Years Exper...', 'Sathya Coatings', 'Innovative form...', 'Specific Produc...')
+#2 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 664
+[28-Mar-2025 06:31:44 UTC] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php:207
+Stack trace:
+#0 /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/editHomeAbout.php(35): Operations::getHomeAbout(NULL)
+#1 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/Operations.class.php on line 207
+[28-Mar-2025 06:43:29 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php:625
+Stack trace:
+#0 /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/editHomeAbout.php(33): User::updateHomeAboutUs('2', Array, Array, '30+ Years Exper...', 'Sathya Coatings', 'Innovative form...', 'Specific Produc...', Object(mysqli))
+#1 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 625
+[28-Mar-2025 06:43:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function prepare() on null in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php:625
+Stack trace:
+#0 /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/editHomeAbout.php(33): User::updateHomeAboutUs('2', Array, Array, '30+ Years Exper...', 'Sathya Coatings', 'Innovative form...', 'Specific Produc...', Object(mysqli))
+#1 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 625
+[28-Mar-2025 06:49:35 UTC] PHP Warning:  Trying to access array offset on value of type null in /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCategory.php on line 13
+[28-Mar-2025 06:49:35 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCategory.php:13) in /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCategory.php on line 17
+[28-Mar-2025 06:49:35 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCategory.php:13) in /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCategory.php on line 18
+[28-Mar-2025 06:51:29 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'cate' in 'where clause' in /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCate.php:12
+Stack trace:
+#0 /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCate.php(12): mysqli->query('SELECT * FROM `...')
+#1 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/deleteCate.php on line 12
+[28-Mar-2025 07:23:38 UTC] PHP Warning:  Array to string conversion in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 480
+[28-Mar-2025 07:23:38 UTC] PHP Warning:  Array to string conversion in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 480
+[28-Mar-2025 07:23:38 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php:480) in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 481
+[28-Mar-2025 07:26:08 UTC] PHP Warning:  Undefined variable $img1 in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 448
+[28-Mar-2025 07:26:08 UTC] PHP Warning:  Undefined variable $img2 in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 460
+[28-Mar-2025 07:26:08 UTC] PHP Warning:  Array to string conversion in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 478
+[28-Mar-2025 07:26:08 UTC] PHP Warning:  Array to string conversion in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 478
+[28-Mar-2025 07:26:08 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php:448) in /home/trymywebsites/public_html/demo6.trymywebsites.com/libs/User.class.php on line 479
+[28-Mar-2025 07:45:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Operations::getGBHero() in /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/viewBGHero.php:15
+Stack trace:
+#0 {main}
+  thrown in /home/trymywebsites/public_html/demo6.trymywebsites.com/Dashboard/viewBGHero.php on line 15
