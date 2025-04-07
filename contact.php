@@ -48,7 +48,7 @@
                         <!-- Contact Us Image Start -->
                         <div class="contact-us-image">
                             <figure class="image-anime reveal">
-                                <img src="assets/logo.png" alt="" />
+                                <img src="assets/logo.png" alt="Logo" />
                             </figure>
                         </div>
                         <!-- Contact Us Image End -->
@@ -66,7 +66,7 @@
                             <!-- Contact Form Start -->
                             <div class="contact-form">
                                 <!-- Contact Form Start -->
-                                <form id="contactForm" action="#" method="POST" data-toggle="validator" class="wow fadeInUp" data-wow-delay="0.4s">
+                                <form id="contactForm" method="POST" data-toggle="validator" class="wow fadeInUp" data-wow-delay="0.4s">
                                     <div class="row">
                                         <div class="form-group col-md-6 mb-4">
                                             <input type="text" name="name" class="form-control" id="name" placeholder="Name*" required />

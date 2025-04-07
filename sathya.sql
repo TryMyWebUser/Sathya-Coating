@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Apr 07, 2025 at 12:08 PM
--- Server version: 10.3.39-MariaDB-log-cll-lve
--- PHP Version: 8.1.32
+-- Host: 127.0.0.1
+-- Generation Time: Apr 07, 2025 at 09:34 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `trymywebsites_sathyad_b`
+-- Database: `sathya`
 --
 
 -- --------------------------------------------------------
@@ -95,7 +95,6 @@ CREATE TABLE `cate` (
   `id` int(11) NOT NULL,
   `page` varchar(225) NOT NULL,
   `category` varchar(255) NOT NULL,
-  `file` varchar(2048) NOT NULL,
   `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -103,14 +102,14 @@ CREATE TABLE `cate` (
 -- Dumping data for table `cate`
 --
 
-INSERT INTO `cate` (`id`, `page`, `category`, `file`, `created_at`) VALUES
-(7, 'product', 'EPOXY FLOOR COATINGS', '../uploads/Categories/PDF/EPOXY FLOOR COATINGS PRODUCT LIST.pdf', '2025-04-06 06:45:54'),
-(8, 'product', 'POLYURETHANE FLOOR COATINGS', '../uploads/Categories/PDF/PU FLOOR COATING PRODUCT LIST.pdf', '2025-04-02 20:12:33'),
-(9, 'product', 'EPU FLOOR COATINGS', '../uploads/Categories/PDF/EPU FLOOR COATING PRODUCT LIST.pdf', '2025-04-02 20:18:09'),
-(14, 'service', 'COMPREHENSIVE SOLUTIONS', '', '2025-04-06 08:45:07'),
-(15, 'product', 'HIGH SRI / TEMEPRATURE REDUCING COOL ROOF COATINGS', '', '2025-04-06 08:19:20'),
-(16, 'product', 'HYGIENIC COATINGS FOR HOSPITALS & CLEAN ROOMS', '', '2025-04-06 08:20:11'),
-(17, 'product', 'FLOOR & WALL COATINGS FOR CAR PARKS & DRIVEWAYS', '', '2025-04-06 08:20:43');
+INSERT INTO `cate` (`id`, `page`, `category`, `created_at`) VALUES
+(7, 'product', 'EPOXY FLOOR COATINGS', '2025-04-06 06:45:54'),
+(8, 'product', 'POLYURETHANE FLOOR COATINGS', '2025-04-02 20:12:33'),
+(9, 'product', 'EPU FLOOR COATINGS', '2025-04-02 20:18:09'),
+(14, 'service', 'COMPREHENSIVE SOLUTIONS', '2025-04-06 08:45:07'),
+(15, 'product', 'HIGH SRI / TEMEPRATURE REDUCING COOL ROOF COATINGS', '2025-04-06 08:19:20'),
+(16, 'product', 'HYGIENIC COATINGS FOR HOSPITALS & CLEAN ROOMS', '2025-04-06 08:20:11'),
+(17, 'product', 'FLOOR & WALL COATINGS FOR CAR PARKS & DRIVEWAYS', '2025-04-06 08:20:43');
 
 -- --------------------------------------------------------
 
@@ -298,8 +297,7 @@ CREATE TABLE `review` (
 
 CREATE TABLE `social` (
   `id` int(11) NOT NULL,
-  `facebook` varchar(2048) NOT NULL,
-  `instagram` varchar(2048) NOT NULL,
+  `linkedin` varchar(2048) NOT NULL,
   `whatsapp` varchar(50) NOT NULL,
   `youtube` varchar(1024) NOT NULL,
   `created_at` datetime NOT NULL
@@ -309,8 +307,8 @@ CREATE TABLE `social` (
 -- Dumping data for table `social`
 --
 
-INSERT INTO `social` (`id`, `facebook`, `instagram`, `whatsapp`, `youtube`, `created_at`) VALUES
-(1, 'https://facebook.com', 'https://instagram.com', '9994924939', 'https://youtube.com', '2025-03-28 12:25:45');
+INSERT INTO `social` (`id`, `linkedin`, `whatsapp`, `youtube`, `created_at`) VALUES
+(1, 'https://www.linkedin.com', '9994924939', 'https://youtube.com', '2025-04-07 12:28:59');
 
 --
 -- Indexes for dumped tables

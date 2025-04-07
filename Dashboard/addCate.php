@@ -21,8 +21,7 @@
         {
             $page = $_POST['page'] ?? "";
             $title = $_POST['title'] ?? "";
-            $file = $_FILES['file'] ?? "";
-            $error = User::setPageCategory($page, $title, $file);
+            $error = User::setPageCategory($page, $title);
         }
     }
 
@@ -67,10 +66,6 @@
                                     <div class="mb-3">
                                         <label class="form-label">Title</label>
                                         <input type="text" class="form-control" placeholder="Enter Title" name="title" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">PDF Upload (Optional)</label>
-                                        <input type="file" name="file" class="form-control" accept=".pdf">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">

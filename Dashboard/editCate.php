@@ -25,8 +25,7 @@
             $getID = $_GET['edit_id'];
             $page = $_POST['page'] ?? "";
             $title = $_POST['title'] ?? "";
-            $file = $_FILES['file'] ?? "";
-            $error = User::updatePageCategory($getID, $file, $page, $title, $conn);
+            $error = User::updatePageCategory($getID, $page, $title, $conn);
         }
     }
 
@@ -69,10 +68,6 @@
                                     <div class="mb-3">
                                         <label class="form-label">Title</label>
                                         <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $cate['category'] ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">PDF Upload (Optional)</label>
-                                        <input type="file" name="file" class="form-control" accept=".pdf">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">

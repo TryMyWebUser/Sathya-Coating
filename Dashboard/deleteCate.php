@@ -30,17 +30,7 @@ if (isset($_GET['delete_id'])) {
         if ($qID) {
             header("Location: deletePS.php?delete_id=" . $qID);
         }
-        if(!empty($qry['file'])){
-            if(is_file($qry['file'])) {
-                unlink($qry['file']);
-                header("Location: viewPS.php?success=Category deleted successfully.");
-                exit;
-            } else {
-                header("Location: viewPS.php");
-            }
-        } else {
-            header("Location: viewPS.php");
-        }
+        header("Location: viewPS.php?success=Category deleted successfully.");
     } else {
         header("Location: viewPS.php?error=Failed to delete category.");
         exit;

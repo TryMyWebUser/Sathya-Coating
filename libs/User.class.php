@@ -26,36 +26,13 @@ class User
         return "Invalid Username and Password";
     }
 
-    public static function setPageCategory($page, $title, $file)
+    public static function setPageCategory($page, $title)
     {
         $conn = Database::getConnect();
-        $targetDirPDF = "../uploads/Categories/PDF/";
     
-        if (!is_dir($targetDirPDF)) {
-            mkdir($targetDirPDF, 0777, true);
-        }
-    
-        $allowPDFTypes = ['pdf'];
-        $filePath = "";
-    
-        // Check if a file is uploaded correctly
-        if (!empty($file["name"])) {
-            $fileName = basename($file["name"]);
-            $filePath = $targetDirPDF . $fileName;
-            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-    
-            if (!in_array($fileType, $allowPDFTypes)) {
-                return "Error: Only PDF files are allowed.";
-            }
-    
-            if (!move_uploaded_file($file["tmp_name"], $filePath)) {
-                return "Error: Failed to upload PDF.";
-            }
-        }
-    
-        $sql = "INSERT INTO `cate` (`page`, `category`, `file`, `created_at`) VALUES (?, ?, ?, NOW())";
+        $sql = "INSERT INTO `cate` (`page`, `category`, `created_at`) VALUES (?, ?, NOW())";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sss", $page, $title, $filePath);
+        $stmt->bind_param("ss", $page, $title);
     
         if ($stmt->execute()) {
             header("Location: addCate.php");
@@ -65,50 +42,12 @@ class User
         }
     }
 
-    public static function updatePageCategory($getID, $file, $page, $title, $conn)
+    public static function updatePageCategory($getID, $page, $title, $conn)
     {
-        $targetDirPDF = "../uploads/Categories/PDF/";
-    
-        if (!is_dir($targetDirPDF)) {
-            mkdir($targetDirPDF, 0777, true);
-        }
-    
-        // Get existing file path from the database
-        $qry = $conn->prepare("SELECT `file` FROM `cate` WHERE `id` = ?");
-        $qry->bind_param("i", $getID);
-        $qry->execute();
-        $result = $qry->get_result();
-        $existingFile = $result->fetch_assoc();
-    
-        $filePath = $existingFile['file'] ?? ""; // Keep existing file path
-    
-        $allowPDFTypes = ['pdf'];
-    
-        // Check if a new file is uploaded
-        if (!empty($file['name'])) {
-            $fileName = basename($file['name']);
-            $filePath = $targetDirPDF . $fileName;
-            $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-    
-            if (!in_array($fileType, $allowPDFTypes)) {
-                return "Error: Only PDF files are allowed.";
-            }
-    
-            // Move the uploaded file
-            if (move_uploaded_file($file["tmp_name"], $filePath)) {
-                // Delete the old file if it exists
-                if (!empty($existingFile['file']) && file_exists($existingFile['file'])) {
-                    unlink($existingFile['file']);
-                }
-            } else {
-                return "Error: Failed to upload new PDF file.";
-            }
-        }
-    
         // Update the record in the database
-        $sql = "UPDATE `cate` SET `page` = ?, `category` = ?, `file` = ?, `created_at` = NOW() WHERE `id` = ?";
+        $sql = "UPDATE `cate` SET `page` = ?, `category` = ?, `created_at` = NOW() WHERE `id` = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssi", $page, $title, $filePath, $getID);
+        $stmt->bind_param("ssi", $page, $title, $getID);
     
         if ($stmt->execute()) {
             header("Location: viewPS.php");
