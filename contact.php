@@ -11,6 +11,8 @@
         
         <?php include "temp/head.php" ?>
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/css/intlTelInput.css" />
+
     </head>
     <body>
         
@@ -23,11 +25,11 @@
                     <div class="col-lg-12">
                         <!-- Page Header Box Start -->
                         <div class="page-header-box">
-                            <h1 class="text-anime-style-2" data-cursor="-opaque">Conatct us</h1>
+                            <h1 class="text-anime-style-2" data-cursor="-opaque">Contact us</h1>
                             <nav class="wow fadeInUp">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="index.php">home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">conatct us</li>
+                                    <li class="breadcrumb-item active" aria-current="page">contact us</li>
                                 </ol>
                             </nav>
                         </div>
@@ -46,7 +48,7 @@
                         <!-- Contact Us Image Start -->
                         <div class="contact-us-image">
                             <figure class="image-anime reveal">
-                                <img src="assets/images/contact-us-image.jpg" alt="" />
+                                <img src="assets/logo.png" alt="" />
                             </figure>
                         </div>
                         <!-- Contact Us Image End -->
@@ -57,7 +59,6 @@
                         <div class="contact-us-form">
                             <!-- Section Title Start -->
                             <div class="section-title">
-                                <h3 class="wow fadeInUp">contact form</h3>
                                 <h2 class="text-anime-style-2" data-cursor="-opaque">We would love to hear <span>from you</span></h2>
                             </div>
                             <!-- Section Title End -->
@@ -73,12 +74,22 @@
                                         </div>
 
                                         <div class="form-group col-md-6 mb-4">
-                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email Address*" required />
+                                            <input type="text" name="org" class="form-control" id="org" placeholder="Name of Organization*" required />
                                             <div class="help-block with-errors"></div>
                                         </div>
 
                                         <div class="form-group col-md-12 mb-4">
-                                            <input type="text" name="phone" class="form-control" id="phone" placeholder="Your Phone" required />
+                                            <input type="text" name="des" class="form-control" id="designation" placeholder="Designation*" required />
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+
+                                        <div class="form-group col-md-6 mb-4">
+                                            <input type="email" name="email" class="form-control" id="email" placeholder="Email Address*" required />
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+
+                                        <div class="form-group col-md-6 mb-4">
+                                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your Phone" required />
                                             <div class="help-block with-errors"></div>
                                         </div>
 
@@ -112,7 +123,6 @@
                     <div class="col-lg-12">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">Our contact</h3>
                             <h2 class="text-anime-style-2" data-cursor="-opaque">Get in touch with us</h2>
                         </div>
                         <!-- Section Title End -->
@@ -146,7 +156,7 @@
                                         $num = explode(',', $con['number']);
                                         foreach ($num as $value) {
                                     ?>
-                                    <p><a href="tel:+91<?= $value ?>" style="color: #000;">+91 <?= $value ?></a></p>
+                                    <p><a href="tel:<?= $value ?>" style="color: #000;"><?= $value ?></a></p>
                                     <?php } ?>
                                 </div>
                                 <!-- Contact Info Content End -->
@@ -202,5 +212,21 @@
         <?php include "temp/footer.php" ?>
 
     </body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/intlTelInput.min.js"></script>
+    <script>
+        const input = document.querySelector("#phone");
+        window.intlTelInput(input, {
+            separateDialCode: true,
+            initialCountry: "auto",
+            geoIpLookup: function(success, failure) {
+            fetch("https://ipinfo.io?token=fa3c9e544ceaa1", { headers: { 'Accept': 'application/json' } })
+                .then(response => response.json())
+                .then(data => success(data.country))
+                .catch(() => success("us"));
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.17/js/utils.js"
+        });
+    </script>
 
 </html>

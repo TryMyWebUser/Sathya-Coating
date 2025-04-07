@@ -26,14 +26,37 @@ class User
         return "Invalid Username and Password";
     }
 
-    public static function setPageCategory($page, $title)
+    public static function setPageCategory($page, $title, $file)
     {
         $conn = Database::getConnect();
-
-        $sql = "INSERT INTO `cate` (`page`, `category`, `created_at`) VALUES (?, ?, NOW())";
+        $targetDirPDF = "../uploads/Categories/PDF/";
+    
+        if (!is_dir($targetDirPDF)) {
+            mkdir($targetDirPDF, 0777, true);
+        }
+    
+        $allowPDFTypes = ['pdf'];
+        $filePath = "";
+    
+        // Check if a file is uploaded correctly
+        if (!empty($file["name"])) {
+            $fileName = basename($file["name"]);
+            $filePath = $targetDirPDF . $fileName;
+            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
+    
+            if (!in_array($fileType, $allowPDFTypes)) {
+                return "Error: Only PDF files are allowed.";
+            }
+    
+            if (!move_uploaded_file($file["tmp_name"], $filePath)) {
+                return "Error: Failed to upload PDF.";
+            }
+        }
+    
+        $sql = "INSERT INTO `cate` (`page`, `category`, `file`, `created_at`) VALUES (?, ?, ?, NOW())";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $page, $title);
-
+        $stmt->bind_param("sss", $page, $title, $filePath);
+    
         if ($stmt->execute()) {
             header("Location: addCate.php");
             exit;
@@ -42,17 +65,56 @@ class User
         }
     }
 
-    public static function updatePageCategory($getID, $page, $title, $conn)
+    public static function updatePageCategory($getID, $file, $page, $title, $conn)
     {
-        $sql = "UPDATE `cate` SET `page` = ?, `category` = ?, `created_at` = NOW() WHERE `id` = ?";
+        $targetDirPDF = "../uploads/Categories/PDF/";
+    
+        if (!is_dir($targetDirPDF)) {
+            mkdir($targetDirPDF, 0777, true);
+        }
+    
+        // Get existing file path from the database
+        $qry = $conn->prepare("SELECT `file` FROM `cate` WHERE `id` = ?");
+        $qry->bind_param("i", $getID);
+        $qry->execute();
+        $result = $qry->get_result();
+        $existingFile = $result->fetch_assoc();
+    
+        $filePath = $existingFile['file'] ?? ""; // Keep existing file path
+    
+        $allowPDFTypes = ['pdf'];
+    
+        // Check if a new file is uploaded
+        if (!empty($file['name'])) {
+            $fileName = basename($file['name']);
+            $filePath = $targetDirPDF . $fileName;
+            $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+    
+            if (!in_array($fileType, $allowPDFTypes)) {
+                return "Error: Only PDF files are allowed.";
+            }
+    
+            // Move the uploaded file
+            if (move_uploaded_file($file["tmp_name"], $filePath)) {
+                // Delete the old file if it exists
+                if (!empty($existingFile['file']) && file_exists($existingFile['file'])) {
+                    unlink($existingFile['file']);
+                }
+            } else {
+                return "Error: Failed to upload new PDF file.";
+            }
+        }
+    
+        // Update the record in the database
+        $sql = "UPDATE `cate` SET `page` = ?, `category` = ?, `file` = ?, `created_at` = NOW() WHERE `id` = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssi", $page, $title, $getID);
-
+        $stmt->bind_param("sssi", $page, $title, $filePath, $getID);
+    
         if ($stmt->execute()) {
             header("Location: viewPS.php");
             exit;
         } else {
-            return "Error occurred while saving data: " . $stmt->error;
+            return "Error occurred while updating data: " . $stmt->error;
         }
     }
 
@@ -86,58 +148,36 @@ class User
         }
     }
 
-    public static function setPS($title, $dec, $file, $img, $cate, $conn)
+    public static function setPS($title, $dec, $img, $cate, $conn)
     {
         $targetDirImg = "../uploads/Products_Services/";
-        $targetDirPDF = "../uploads/Products_Services/PDF/";
-
+    
         if (!is_dir($targetDirImg)) {
             mkdir($targetDirImg, 0777, true);
         }
-
-        if (!is_dir($targetDirPDF)) {
-            mkdir($targetDirPDF, 0777, true);
-        }
-
+    
         $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
-        $allowPDFTypes = ['pdf'];
-
         $imgPath = "";
-        $filePath = "";
-
+    
         if (!empty($_FILES["img"]["name"])) {
             $imgName = basename($_FILES["img"]["name"]);
             $imgPath = $targetDirImg . $imgName;
             $imgType = pathinfo($imgName, PATHINFO_EXTENSION);
-
+    
             if (!in_array($imgType, $allowImageTypes)) {
                 return "Error: Only JPG, JPEG, PNG, and GIF files are allowed for images.";
             }
-
+    
             if (!move_uploaded_file($_FILES["img"]["tmp_name"], $imgPath)) {
                 return "Error: Failed to upload image.";
             }
         }
-
-        if (!empty($_FILES["file"]["name"])) {
-            $fileName = basename($_FILES["file"]["name"]);
-            $filePath = $targetDirPDF . $fileName;
-            $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
-
-            if (!in_array($fileType, $allowPDFTypes)) {
-                return "Error: Only PDF files are allowed.";
-            }
-
-            if (!move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
-                return "Error: Failed to upload PDF.";
-            }
-        }
-
-        $sql = "INSERT INTO `product-service`(`title`, `dec`, `file`, `img`, `category`, `created_at`) 
-                VALUES (?, ?, ?, ?, ?, NOW())";
+    
+        $sql = "INSERT INTO `product-service`(`title`, `dec`, `img`, `category`, `created_at`) 
+                VALUES (?, ?, ?, ?, NOW())";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssss", $title, $dec, $filePath, $imgPath, $cate);
-
+        $stmt->bind_param("ssss", $title, $dec, $imgPath, $cate);
+    
         if ($stmt->execute()) {
             header("Location: viewPS.php");
             exit;
@@ -145,40 +185,32 @@ class User
             return "Error occurred while saving data: " . $stmt->error;
         }
     }
-
-    public static function updatePS($title, $dec, $file, $img, $cate, $getID, $conn)
+    
+    public static function updatePS($title, $dec, $img, $cate, $getID, $conn)
     {
         $targetDirImg = "../uploads/Products_Services/";
-        $targetDirPDF = "../uploads/Products_Services/PDF/";
-
+    
         if (!is_dir($targetDirImg)) {
             mkdir($targetDirImg, 0777, true);
         }
-
-        if (!is_dir($targetDirPDF)) {
-            mkdir($targetDirPDF, 0777, true);
-        }
-
+    
         $qry = $conn->prepare("SELECT * FROM `product-service` WHERE `id` = ?");
         $qry->bind_param("i", $getID);
         $qry->execute();
         $qry = $qry->get_result()->fetch_array();
-
+    
         $imgPath = $qry['img'];
-        $filePath = $qry['file'];
-
         $allowImageTypes = ['jpg', 'png', 'jpeg', 'gif'];
-        $allowPDFTypes = ['pdf'];
-
+    
         if (!empty($_FILES["img"]["name"])) {
             $imgName = basename($_FILES["img"]["name"]);
             $imgPath = $targetDirImg . $imgName;
             $imgType = strtolower(pathinfo($imgName, PATHINFO_EXTENSION));
-
+    
             if (!in_array($imgType, $allowImageTypes)) {
                 return "Error: Only JPG, JPEG, PNG, and GIF files are allowed.";
             }
-
+    
             if (move_uploaded_file($_FILES["img"]["tmp_name"], $imgPath)) {
                 if (!empty($qry['img']) && file_exists($qry['img'])) {
                     unlink($qry['img']);
@@ -187,31 +219,13 @@ class User
                 return "Error: Failed to upload new image.";
             }
         }
-
-        if (!empty($_FILES["file"]["name"])) {
-            $fileName = basename($_FILES["file"]["name"]);
-            $filePath = $targetDirPDF . $fileName;
-            $fileType = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
-            if (!in_array($fileType, $allowPDFTypes)) {
-                return "Error: Only PDF files are allowed.";
-            }
-
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $filePath)) {
-                if (!empty($qry['file']) && file_exists($qry['file'])) {
-                    unlink($qry['file']);
-                }
-            } else {
-                return "Error: Failed to upload new PDF file.";
-            }
-        }
-
+    
         $sql = "UPDATE `product-service` 
-                SET `title` = ?, `dec` = ?, `file` = ?, `img` = ?, `category` = ?, `created_at` = NOW() 
+                SET `title` = ?, `dec` = ?, `img` = ?, `category` = ?, `created_at` = NOW() 
                 WHERE `id` = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssi", $title, $dec, $filePath, $imgPath, $cate, $getID);
-
+        $stmt->bind_param("ssssi", $title, $dec, $imgPath, $cate, $getID);
+    
         if ($stmt->execute()) {
             header("Location: viewPS.php");
             exit;
@@ -298,14 +312,14 @@ class User
         }
     }
 
-    public static function setSocial($fb, $insta, $wa, $yt)
+    public static function setSocial($link, $wa, $yt)
     {
         $conn = Database::getConnect();
-        $sql = "INSERT INTO `social` (`facebook`, `instagram`, `whatsapp`, `youtube`, `created_at`) 
-                VALUES (?, ?, ?, ?, NOW())";
+        $sql = "INSERT INTO `social` (`linkedin`, `whatsapp`, `youtube`, `created_at`) 
+                VALUES (?, ?, ?, NOW())";
         
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssss", $fb, $insta, $wa, $yt);
+        $stmt->bind_param("sss", $link, $wa, $yt);
         
         if ($stmt->execute()) {
             header("Location: viewContact.php");
@@ -315,15 +329,15 @@ class User
         }
     }
 
-    public static function updateSocial($fb, $insta, $wa, $yt, $getID)
+    public static function updateSocial($link, $wa, $yt, $getID)
     {
         $conn = Database::getConnect();
         $sql = "UPDATE `social` 
-                SET `facebook` = ?, `instagram` = ?, `whatsapp` = ?, `youtube` = ?, `created_at` = NOW() 
+                SET `linkedin` = ?, `whatsapp` = ?, `youtube` = ?, `created_at` = NOW() 
                 WHERE `id` = ?";
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssi", $fb, $insta, $wa, $yt, $getID);
+        $stmt->bind_param("sssi", $link, $wa, $yt, $getID);
 
         if ($stmt->execute()) {
             header("Location: viewContact.php");

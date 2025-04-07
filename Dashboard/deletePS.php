@@ -11,10 +11,9 @@ if (isset($_GET['delete_id'])) {
     $sql = "DELETE FROM `product-service` WHERE `id` = '$delete_id'";
     $result = $conn->query($sql);
     if ($result) {
-        if(!empty($qry['img']) && !empty($qry['file'])){
-            if(is_file($qry['img']) && is_file($qry['file'])) {
+        if(!empty($qry['img'])) {
+            if(is_file($qry['img'])) {
                 unlink($qry['img']);
-                unlink($qry['file']);
                 header("Location: viewPS.php");
             } else {
                 header("Location: viewPS.php");

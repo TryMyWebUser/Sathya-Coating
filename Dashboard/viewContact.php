@@ -105,8 +105,7 @@
                                             foreach ($social as $row) {
                                     ?>
                                     <tr>
-                                        <td><a href="<?= $row['facebook'] ?>">Facebook</a></td>
-                                        <td><a href="<?= $row['instagram'] ?>">Instagram</a></td>
+                                        <td><a href="<?= $row['linkedin'] ?>">Linkedin</a></td>
                                         <td><a href="https://wa.me/<?= $row['whatsapp'] ?>">WhatsApp</a></td>
                                         <td><a href="<?= $row['youtube'] ?>">YouTube</a></td>
                                         <td>

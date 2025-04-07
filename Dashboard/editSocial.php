@@ -16,14 +16,13 @@
     // Handle contact page form submission
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Social media form submission
-        if (isset($_POST['submit_link']) && isset($_POST['fb']) && isset($_POST['insta']) && isset($_POST['wa']) && isset($_POST['yt'])) {
+        if (isset($_POST['submit_link']) && isset($_POST['link']) && isset($_POST['wa']) && isset($_POST['yt'])) {
             $getID = $_GET['edit_id'];
-            $fb = $_POST['fb'];
-            $insta = $_POST['insta'];
+            $link = $_POST['link'];
             $wa = $_POST['wa'];
             $yt = $_POST['yt'];
 
-            $error = User::updateSocial($fb, $insta, $wa, $yt, $getID);
+            $error = User::updateSocial($link, $wa, $yt, $getID);
         }
     }
 
@@ -65,12 +64,8 @@
                                     <hr />
                                     <form class="row g-3" method="POST">
                                         <div class="col-12">
-                                            <label class="form-label">Facebook - Use (Full Link)</label>
-                                            <input type="text" name="fb" class="form-control" value="<?= htmlspecialchars($social['facebook']) ?>"/>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Instagram - Use (Full Link)</label>
-                                            <input type="text" name="insta" class="form-control" value="<?= htmlspecialchars($social['instagram']) ?>"/>
+                                            <label class="form-label">Linkedin - Use (Full Link)</label>
+                                            <input type="text" name="link" class="form-control" value="<?= htmlspecialchars($social['linkedin']) ?>"/>
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">WhatsApp - Use (Number Only)</label>

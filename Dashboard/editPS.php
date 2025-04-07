@@ -15,7 +15,7 @@
 
     $conn = Database::getConnect();
     $ps = Operations::getProduct($conn);
-    $category = Operations::getProCategory($conn);
+    $category = Operations::getCateChecker($conn);
 
     // Check if form is submitted
     if ($_SERVER['REQUEST_METHOD'] === 'POST')
@@ -30,10 +30,9 @@
             $getID = $_GET['edit_id'];
             $title = $_POST['title'] ?? "";
             $dec = $_POST['dec'] ?? "";
-            $file = $_FILES['file'] ?? "";
             $img = $_FILES['img'] ?? "";
             $cate = $_POST['cate'] ?? "";
-            $error = User::updatePS($title, $dec, $file, $img, $cate, $getID, $conn);
+            $error = User::updatePS($title, $dec, $img, $cate, $getID, $conn);
         } else {
             $error = "Invalid form submission";
         }        
@@ -70,50 +69,29 @@
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label class="form-label">Services Page Category (*)</label>
-<<<<<<< HEAD
                                         <select class="form-select" id="inlineFormCustomSelect" name="cate">
-                                            <option value="<?= $ps['category']; ?>">Select Category</option>
+                                            <option value="<?= $ps['category'] ?>">Select Category</option>
+                                            <option disabled>Products:</option>
                                             <?php
                                                 foreach ($category as $cate) {
+                                                    if ($cate['page'] === 'product') {
                                             ?>
                                             <option value="<?= $cate['category'] ?>"><?= $cate['category'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-=======
-                                        <select class="form-select" id="inlineFormCustomSelect" name="cate" required>
-                                            <option value="">Select Category</option>
-                                            <?php foreach ($category as $cate) { ?>
-                                                <option value="<?= htmlspecialchars($cate['category']) ?>" 
-                                                    <?= ($cate['category'] == $ps['category']) ? 'selected' : '' ?>>
-                                                    <?= htmlspecialchars($cate['category']) ?>
-                                                </option>
-                                            <?php } ?>
+                                            <?php } } ?>
+                                            <option disabled>Services:</option>
+                                            <?php
+                                                foreach ($category as $cate) {
+                                                    if ($cate['page'] === 'service') {
+                                            ?>
+                                            <option value="<?= $cate['category'] ?>"><?= $cate['category'] ?></option>
+                                            <?php } } ?>
                                         </select>
                                     </div>
 
->>>>>>> developer
                                     <div class="mb-3">
-                                        <label class="form-label">Background Image Upload (Optional)</label>
+                                        <label class="form-label">Image Upload (Optional)</label>
                                         <input type="file" name="img" class="form-control" accept=".jpg, .jpeg, .png, .gif">
                                     </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> developer
-                                    <div class="mb-3">
-                                        <label class="form-label">PDF Upload (Optional)</label>
-                                        <input type="file" name="file" class="form-control" accept=".pdf">
-                                    </div>
-<<<<<<< HEAD
-                                    <div class="mb-3">
-                                        <label class="form-label">Title (*)</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $ps['title'] ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                    <label class="form-label">Description (*)</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4"><?= $ps['dec'] ?></textarea>
-=======
 
                                     <div class="mb-3">
                                         <label class="form-label">Title (*)</label>
@@ -125,7 +103,6 @@
                                         <label class="form-label">Description (*)</label>
                                         <div class="quill-editor" data-name="dec"><?= isset($ps['dec']) ? htmlspecialchars($ps['dec']) : '' ?></div>
                                         <input type="hidden" name="dec" value="<?= isset($ps['dec']) ? htmlspecialchars($ps['dec']) : '' ?>">
->>>>>>> developer
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">

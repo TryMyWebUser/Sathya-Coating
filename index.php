@@ -40,17 +40,17 @@
                                         <!-- Hero Content Start -->
                                         <div class="hero-content">
                                             <!-- Section Title Start -->
-                                            <div class="section-title">
-                                                <h3 class="wow fadeInUp"><?= $h['header'] ?></h3>
-                                                <h1 class="text-anime-style-2" data-cursor="-opaque"><?= $h['title'] ?></h1>
-                                                <p class="wow fadeInUp" data-wow-delay="0.2s"><?= $h['dec'] ?></p>
-                                            </div>
+                                            <!--<div class="section-title">-->
+                                                <div class="wow fadeInUp"><?= $h['header'] ?></div>
+                                                <div class="text-anime-style-2" data-cursor="-opaque"><?= $h['title'] ?></div>
+                                                <div class="wow fadeInUp" data-wow-delay="0.2s"><?= $h['dec'] ?></div>
+                                            <!--</div>-->
                                             <!-- Section Title End -->
                     
                                             <!-- Hero Button Start -->
                                             <div class="hero-btn wow fadeInUp" data-wow-delay="0.4s">
-                                                <a href="#products" class="btn-default"><?= $h['button_text1'] ?></a>
-                                                <a href="#services" class="btn-default btn-highlighted"><?= $h['button_text2'] ?></a>
+                                                <a href="projects.php" class="btn-default"><?= $h['button_text1'] ?></a>
+                                                <a href="services.php" class="btn-default btn-highlighted"><?= $h['button_text2'] ?></a>
                                             </div>
                                             <!-- Hero Button End -->
                                         </div>
@@ -112,7 +112,7 @@
                         <div class="about-us-content">
                             <!-- Section Title Start -->
                             <div class="section-title">
-                                <h3 class="wow fadeInUp">About US</h3>
+                                <!--<h3 class="wow fadeInUp">About US</h3>-->
                                 <h2 class="text-anime-style-2" data-cursor="-opaque"><?= $ab['title'] ?></span></h2>
                                 <p class="wow fadeInUp" data-wow-delay="0.2s">
                                 <?= $ab['dec'] ?>
@@ -169,9 +169,9 @@
                         <div class="why-choose-content">
                             <!-- Section Title Start -->
                             <div class="section-title">
-                                <h3 class="wow fadeInUp">Our Features</h3>
+                                <!--<h3 class="wow fadeInUp">Our Features</h3>-->
                                 <h2 class="text-anime-style-2" data-cursor="-opaque"><?= $f['title'] ?></span></h2>
-                                <p class="wow fadeInUp" data-wow-delay="0.2s"><?= $f['dec'] ?></p>
+                                <!--<p class="wow fadeInUp" data-wow-delay="0.2s">< ?= $f['dec'] ?></p>-->
                             </div>
                             <!-- Section Title End -->
 
@@ -220,102 +220,6 @@
         </div>
         <?php } } else { echo "<p>Features Not Found</p>"; } ?>
         <!-- Why Choose Us Section End -->
-
-        <!-- Our Projects Section Start -->
-        <div class="our-blog" id="products">
-            <div class="container">
-                <div class="row section-row align-items-center">
-                    <div class="col-lg-6">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">latest products</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque"><span>Our Completed</span> Products Category</h2>
-                        </div>
-                        <!-- Section Title End -->
-                    </div>
-                </div>
-
-                <div class="row">
-                    <?php
-                        $cate = OPerations::getCCate($conn);
-                        if (!empty($cate)) {
-                            foreach ($cate as $c) {
-                                if ($c['page'] === 'product') {
-                    ?>
-                    <div class="col-lg-4 col-md-6">
-                        <!-- Post Item Start -->
-                        <div class="post-item wow fadeInUp">
-                            <!-- Post Item Body Start -->
-                            <div class="post-item-body">
-                                <!-- Post Item Content Start -->
-                                <div class="post-item-content">
-                                    <h3><a href="#"><?= $c['category'] ?></a></h3>
-                                </div>
-                                <!-- Post Item Content End -->
-
-                                <!-- Blog Item Button Start -->
-                                <!-- <div class="post-item-btn">
-                                    <a href="projects.php?data=< ?= $c['category'] ?>" class="post-btn">read more</a>
-                                </div> -->
-                                <!-- Blog Item Button End -->
-                            </div>
-                            <!-- Post Item Body End -->
-                        </div>
-                        <!-- Post Item End -->
-                    </div>
-                    <?php } } } else { echo "<p>Products Not Found</p>"; } ?>
-                </div>
-            </div>
-        </div>
-        <!-- Our Projects Section End -->
-
-        <!-- Our Services Section Start -->
-        <div class="our-blog" id="services">
-            <div class="container">
-                <div class="row section-row align-items-center">
-                    <div class="col-lg-6">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">latest services</h3>
-                            <h2 class="text-anime-style-2" data-cursor="-opaque"><span>Turn Key</span> Services Category</h2>
-                        </div>
-                        <!-- Section Title End -->
-                    </div>
-                </div>
-
-                <div class="row">
-                <?php
-                        $cate = OPerations::getCCate($conn);
-                        if (!empty($cate)) {
-                            foreach ($cate as $c) {
-                                if ($c['page'] === 'service') {
-                    ?>
-                    <div class="col-lg-4 col-md-6">
-                        <!-- Post Item Start -->
-                        <div class="post-item wow fadeInUp">
-                            <!-- Post Item Body Start -->
-                            <div class="post-item-body">
-                                <!-- Post Item Content Start -->
-                                <div class="post-item-content">
-                                    <h3><a href="#"><?= $c['category'] ?></a></h3>
-                                </div>
-                                <!-- Post Item Content End -->
-
-                                <!-- Blog Item Button Start -->
-                                <!-- <div class="post-item-btn">
-                                    <a href="services.php?data=< ?= $c['category'] ?>" class="post-btn">read more</a>
-                                </div> -->
-                                <!-- Blog Item Button End -->
-                            </div>
-                            <!-- Post Item Body End -->
-                        </div>
-                        <!-- Post Item End -->
-                    </div>
-                    <?php } } } else { echo "<p>Services Not Found</p>"; } ?>
-                </div>
-            </div>
-        </div>
-        <!-- Our Services Section End -->
 
         <?php include "temp/footer.php" ?>
 

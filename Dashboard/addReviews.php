@@ -62,22 +62,6 @@
                                     <hr />
                                     <form class="row g-3" method="POST" enctype="multipart/form-data">
                                         <div class="col-12">
-<<<<<<< HEAD
-                                            <label class="form-label">User Image (Optional)</label>
-                                            <input type="file" name="img" class="form-control"/>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Name</label>
-                                            <input type="text" name="name" class="form-control" required/>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Rating</label>
-                                            <input type="number" name="rating" min="1" max="5" class="form-control" required/>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Review</label>
-                                            <textarea class="form-control" name="review" rows="4" cols="4" required></textarea>
-=======
                                             <label class="form-label"><b>User Image (Optional)</b></label>
                                             <input type="file" name="img" class="form-control"/>
                                         </div>
@@ -97,7 +81,6 @@
                                             <label class="form-label"><b>Review</b></label>
                                             <div class="quill-editor" data-name="review"></div>
                                             <input type="hidden" name="review" required>
->>>>>>> developer
                                         </div>
                                         <div class="col-12">
                                             <div class="d-grid">

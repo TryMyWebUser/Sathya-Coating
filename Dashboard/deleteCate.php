@@ -29,10 +29,17 @@ if (isset($_GET['delete_id'])) {
         // If related products/services exist, delete them
         if ($qID) {
             header("Location: deletePS.php?delete_id=" . $qID);
-            exit;
+        }
+        if(!empty($qry['file'])){
+            if(is_file($qry['file'])) {
+                unlink($qry['file']);
+                header("Location: viewPS.php?success=Category deleted successfully.");
+                exit;
+            } else {
+                header("Location: viewPS.php");
+            }
         } else {
-            header("Location: viewPS.php?success=Category deleted successfully.");
-            exit;
+            header("Location: viewPS.php");
         }
     } else {
         header("Location: viewPS.php?error=Failed to delete category.");

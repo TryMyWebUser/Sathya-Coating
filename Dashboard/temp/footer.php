@@ -20,8 +20,6 @@
 <script>
     new PerfectScrollbar(".best-product");
     new PerfectScrollbar(".top-sellers-list");
-<<<<<<< HEAD
-=======
 </script>
 
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
@@ -74,5 +72,4 @@
             });
         });
     });
->>>>>>> developer
 </script>

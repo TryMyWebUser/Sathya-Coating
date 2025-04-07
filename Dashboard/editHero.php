@@ -62,31 +62,6 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
-<<<<<<< HEAD
-                                        <label class="form-label">Slider Background Image Upload</label>
-                                        <input type="file" name="img" class="form-control">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Header</label>
-                                        <input type="text" class="form-control" placeholder="Enter Header" name="header" value="<?= $hero['header'] ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $hero['title'] ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4"><?= $hero['dec'] ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Button Text 1</label>
-                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b1" value="<?= $hero['button_text1'] ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Button Text 2</label>
-                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b2" value="<?= $hero['button_text2'] ?>">
-                                    </div>
-=======
                                         <label class="form-label"><b>Slider Background Image Upload</b></label>
                                         <input type="file" name="img" class="form-control">
                                     </div>
@@ -121,7 +96,6 @@
                                             value="<?= isset($hero['button_text2']) ? htmlspecialchars($hero['button_text2']) : '' ?>">
                                     </div>
 
->>>>>>> developer
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
                                             <div class="ms-auto mt-3 mt-md-0">

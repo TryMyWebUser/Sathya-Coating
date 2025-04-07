@@ -21,15 +21,8 @@
         {
             $page = $_POST['page'] ?? "";
             $title = $_POST['title'] ?? "";
-            $error = User::setPageCategory($page, $title);
-        }
-
-        // Check if both username and password keys exist in $_POST
-        if (isset($_POST['submit_cate']) && isset($_POST['title']) && isset($_POST['cate']))
-        {
-            $cate = $_POST['cate'] ?? "";
-            $category = $_POST['title'] ?? "";
-            $error = User::setCategory($cate, $category);
+            $file = $_FILES['file'] ?? "";
+            $error = User::setPageCategory($page, $title, $file);
         }
     }
 
@@ -62,7 +55,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card card-body">
-                                <form class="form-horizontal" method="POST">
+                                <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label class="form-label">Page Select</label>
                                         <select class="form-select" id="inlineFormCustomSelect" name="page" required>
@@ -72,57 +65,17 @@
                                         </select>
                                     </div>
                                     <div class="mb-3">
-<<<<<<< HEAD
                                         <label class="form-label">Title</label>
                                         <input type="text" class="form-control" placeholder="Enter Title" name="title" required>
-=======
-                                        <label class="form-label"><b>Title</b></label>
-                                        <div class="quill-editor" data-name="title"></div>
-                                        <input type="hidden" name="title" required>
->>>>>>> developer
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">PDF Upload (Optional)</label>
+                                        <input type="file" name="file" class="form-control" accept=".pdf">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
                                             <div class="ms-auto mt-3 mt-md-0">
                                                 <button type="submit" name="submit" class="btn btn-primary hstack gap-6">
-                                                    <i class="ti ti-send fs-4"></i>
-                                                    Submit
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        
-                        <div class="col-12">
-                            <div class="card card-body">
-                                <form class="form-horizontal" method="POST">
-                                    <div class="mb-3">
-                                        <label class="form-label">Select Category</label>
-                                        <select class="form-select" id="inlineFormCustomSelect" name="cate" required>
-                                            <option>Choose Category...</option>
-                                            <?php
-                                                foreach ($category as $cate) {
-                                            ?>
-                                            <option value="<?= $cate['category'] ?>"><?= $cate['category'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                    <div class="mb-3">
-<<<<<<< HEAD
-                                        <label class="form-label">Sub Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Sub Title" name="title" required>
-=======
-                                        <label class="form-label"><b>Sub Title</b></label>
-                                        <div class="quill-editor" data-name="sub_title"></div>
-                                        <input type="hidden" name="sub_title" required>
->>>>>>> developer
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="d-md-flex align-items-center">
-                                            <div class="ms-auto mt-3 mt-md-0">
-                                                <button type="submit" name="submit_cate" class="btn btn-primary hstack gap-6">
                                                     <i class="ti ti-send fs-4"></i>
                                                     Submit
                                                 </button>

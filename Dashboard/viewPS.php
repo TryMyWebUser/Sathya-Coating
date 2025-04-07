@@ -52,7 +52,14 @@
                                     <div class="row h-100">
                                         <div class="col-12 col-md-12">
                                             <div>
-                                                <a href="viewPS-1.php?data=<?= $cate['category']; ?>" class="card-title link-primary fw-semibold text-dark"><?= $cate['category']; ?></a>
+                                                <a href="viewPS-1.php?data=<?= urlencode($cate['category']); ?>" class="card-title link-primary fw-semibold text-dark"><?= $cate['category']; ?></a>
+                                                <!-- Download Button -->
+                                                <?php if (!empty($cate['file'])) { ?>
+                                                <br><br>
+                                                <a href="<?= $cate['file'] ?>" type="button" class="btn btn-outline-primary" download="<?= $cate['file'] ?>">
+                                                    Download File
+                                                </a>
+                                                <?php } ?>
                                                 <p class="card-subtitle mt-4">
                                                     <a href="editCate.php?edit_id=<?= $cate['id']; ?>">
                                                         <button type="button" class="btn btn-square btn-outline-info me-1 p-1">
@@ -87,7 +94,14 @@
                                     <div class="row h-100">
                                         <div class="col-12 col-md-12">
                                             <div>
-                                                <a href="viewPS-1.php?data=<?= $cate['category']; ?>" class="card-title link-primary fw-semibold text-dark"><?= $cate['category']; ?></a>
+                                                <a href="viewPS-1.php?data=<?= urlencode($cate['category']); ?>" class="card-title link-primary fw-semibold text-dark"><?= $cate['category']; ?></a>
+                                                <!-- Download Button -->
+                                                <?php if (!empty($cate['file'])) { ?>
+                                                <br><br>
+                                                <a href="<?= $cate['file'] ?>" type="button" class="btn btn-outline-primary" download="<?= $cate['file'] ?>">
+                                                    Download File
+                                                </a>
+                                                <?php } ?>
                                                 <p class="card-subtitle mt-4">
                                                     <a href="editCate.php?edit_id=<?= $cate['id']; ?>">
                                                         <button type="button" class="btn btn-square btn-outline-info me-1 p-1">

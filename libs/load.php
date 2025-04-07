@@ -6,12 +6,7 @@ spl_autoload_register(function ($class) {
 });
 
 // Prevent browser caching
-<<<<<<< HEAD
-header("Cache-Control: no-cache, must-revalidate");
-header("Pragma: no-cache");
-=======
 // header("Cache-Control: no-cache, must-revalidate");
 // header("Pragma: no-cache");
->>>>>>> developer
 
 ?>

@@ -22,15 +22,11 @@
 <link href="assets/css/semi-dark.css" rel="stylesheet" />
 <link href="assets/css/header-colors.css" rel="stylesheet" />
 
-<<<<<<< HEAD
-<title>Sathya Coatings</title>
-=======
 <title>Sathya Coatings</title>
 
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
     .quill-editor {
-        height: 100px;
+        height: 200px;
     }
 </style>
->>>>>>> developer

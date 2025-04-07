@@ -60,21 +60,6 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
-<<<<<<< HEAD
-                                        <label class="form-label">Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $HF['title'] ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4"><?= $HF['dec'] ?></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Points - Use (,)</label>
-                                        <input type="text" class="form-control" placeholder="Enter Points" name="points" value="<?= $HF['points'] ?>">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Image Upload</label>
-=======
                                         <label class="form-label"><b>Title</b></label>
                                         <div class="quill-editor" data-name="title"><?= htmlspecialchars($HF['title']) ?></div>
                                         <input type="hidden" name="title" value="<?= htmlspecialchars($HF['title']) ?>">
@@ -93,7 +78,6 @@
 
                                     <div class="mb-3">
                                         <label class="form-label"><b>Image Upload</b></label>
->>>>>>> developer
                                         <input type="file" name="img" class="form-control">
                                     </div>
                                     <div class="col-12">

@@ -32,9 +32,10 @@ class Operations
     }
     public static function getProCategory($conn)
     {
-        $sql = "SELECT * FROM `ps-category` ORDER BY `created_at` ASC";
+        $getData = urldecode($_GET['data']);
+        $sql = "SELECT * FROM `cate` WHERE `category` = '$getData'";
         $result = $conn->query($sql);
-        return iterator_to_array($result);
+        return $result ? $result->fetch_assoc() : null;;
     }
     public static function getProducts()
     {
@@ -58,13 +59,13 @@ class Operations
 
     public static function getProductPage($page, $conn)
     {
-        $sql = "SELECT * FROM `product-service` WHERE `category` = '$page'";
+        $sql = "SELECT * FROM `cate` WHERE `category` = '$page'";
         $result = $conn->query($sql);
         return iterator_to_array($result);
     }
     public static function getPS()
     {
-        $getData = $_GET['data'];
+        $getData = urldecode($_GET['data']);
         $conn = Database::getConnect();
         $sql = "SELECT * FROM `product-service` WHERE `category` = '$getData'";
         $result = $conn->query($sql);
@@ -72,7 +73,7 @@ class Operations
     }
     public static function getFPS($conn)
     {
-        $getData = $_GET['data'];
+        $getData = urldecode($_GET['data']);
         $sql = "SELECT * FROM `product-service` WHERE `category` = '$getData'";
         $result = $conn->query($sql);
         return iterator_to_array($result);

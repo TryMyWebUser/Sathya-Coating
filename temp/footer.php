@@ -9,7 +9,7 @@
                         <div class="col-md-6">
                             <!-- Footer Logo Start -->
                             <div class="footer-logo">
-                                <img src="assets/images/footer-logo.png" alt="Footer Logo" style="width: 20rem;" />
+                                <img src="assets/sathya_logo.png" class="me-2" style="width: 25rem;" alt="Logo" />
                             </div>
                             <!-- Footer Logo End -->
                         </div>
@@ -23,16 +23,13 @@
                                 <?php $social = Operations::getSocials($conn); ?>
                                 <ul>
                                     <li>
-                                        <a href="<?= $social['facebook'] ?>"><i class="fa-brands fa-facebook-f"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="<?= $social['instagram'] ?>"><i class="fa-brands fa-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="https://wa.me/<?= $social['whatsapp'] ?>"><i class="fa-brands fa-whatsapp"></i></a>
+                                        <a href="<?= $social['linkedin'] ?>"><i class="fa-brands fa-linkedin"></i></a>
                                     </li>
                                     <li>
                                         <a href="<?= $social['youtube'] ?>"><i class="fa-brands fa-youtube"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="https://wa.me/<?= $social['whatsapp'] ?>"><i class="fa-brands fa-whatsapp"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -86,7 +83,7 @@
                                 $num = explode(',', $con['number']);
                                 foreach ($num as $value) {
                             ?>
-                            <p><a href="tel:+91<?= $value ?>" style="color: #fff;">+91 <?= $value ?></a></p>
+                            <p><a href="tel:<?= $value ?>" style="color: #fff;"><?= $value ?></a></p>
                             <?php } ?>
                         </div>
                     </div>

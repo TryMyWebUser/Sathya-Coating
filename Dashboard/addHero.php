@@ -58,31 +58,6 @@
                             <div class="card card-body">
                                 <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
-<<<<<<< HEAD
-                                        <label class="form-label">Slider Background Image Upload</label>
-                                        <input type="file" name="img" class="form-control" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Header</label>
-                                        <input type="text" class="form-control" placeholder="Enter Header" name="header" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Title</label>
-                                        <input type="text" class="form-control" placeholder="Enter Title" name="title" required>
-                                    </div>
-                                    <div class="mb-3">
-                                    <label class="form-label">Description</label>
-                                    <textarea class="form-control" name="dec" placeholder="Description" rows="4" required></textarea>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Button Text 1</label>
-                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b1" required>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Button Text 2</label>
-                                        <input type="text" class="form-control" placeholder="Enter Button Text" name="b2" required>
-                                    </div>
-=======
                                         <label class="form-label"><b>Slider Background Image Upload</b></label>
                                         <input type="file" name="img" class="form-control" required>
                                     </div>
@@ -117,17 +92,11 @@
                                         <input type="hidden" name="b2" required>
                                     </div>
 
->>>>>>> developer
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">
                                             <div class="ms-auto mt-3 mt-md-0">
                                                 <button type="submit" name="submit" class="btn btn-primary hstack gap-6">
-<<<<<<< HEAD
-                                                    <i class="ti ti-send fs-4"></i>
-                                                    Submit
-=======
                                                     <i class="ti ti-send fs-4"></i> Submit
->>>>>>> developer
                                                 </button>
                                             </div>
                                         </div>

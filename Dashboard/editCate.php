@@ -25,7 +25,8 @@
             $getID = $_GET['edit_id'];
             $page = $_POST['page'] ?? "";
             $title = $_POST['title'] ?? "";
-            $error = User::updatePageCategory($getID, $page, $title, $conn);
+            $file = $_FILES['file'] ?? "";
+            $error = User::updatePageCategory($getID, $file, $page, $title, $conn);
         }
     }
 
@@ -56,28 +57,22 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card card-body">
-                                <form class="form-horizontal" method="POST">
+                                <form class="form-horizontal" method="POST" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label class="form-label">Page Select</label>
                                         <select class="form-select" id="inlineFormCustomSelect" name="page">
-<<<<<<< HEAD
                                             <option value="<?= $cate['page'] ?>">Choose The Page...</option>
-=======
-                                            <option value="<?= htmlspecialchars($cate['page']) ?>">Choose The Page...</option>
->>>>>>> developer
                                             <option value="service">Service Page</option>
                                             <option value="product">Product Page</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
-<<<<<<< HEAD
                                         <label class="form-label">Title</label>
                                         <input type="text" class="form-control" placeholder="Enter Title" name="title" value="<?= $cate['category'] ?>">
-=======
-                                        <label class="form-label"><b>Title</b></label>
-                                        <div class="quill-editor" data-name="title"><?= htmlspecialchars($cate['category']) ?></div>
-                                        <input type="hidden" name="title" value="<?= htmlspecialchars($cate['category']) ?>">
->>>>>>> developer
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">PDF Upload (Optional)</label>
+                                        <input type="file" name="file" class="form-control" accept=".pdf">
                                     </div>
                                     <div class="col-12">
                                         <div class="d-md-flex align-items-center">

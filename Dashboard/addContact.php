@@ -27,13 +27,12 @@
         }
 
         // Social media form submission
-        if (isset($_POST['submit_link']) && isset($_POST['fb']) && isset($_POST['insta']) && isset($_POST['wa']) && isset($_POST['yt'])) {
-            $fb = $_POST['fb'];
-            $insta = $_POST['insta'];
+        if (isset($_POST['submit_link']) && isset($_POST['link']) && isset($_POST['wa']) && isset($_POST['yt'])) {
+            $link = $_POST['link'];
             $wa = $_POST['wa'];
             $yt = $_POST['yt'];
 
-            $error = User::setSocial($fb, $insta, $wa, $yt);
+            $error = User::setSocial($link, $wa, $yt);
         }
     }
 
@@ -104,12 +103,8 @@
                                     <hr />
                                     <form class="row g-3" method="POST">
                                         <div class="col-12">
-                                            <label class="form-label">Facebook - Use (Full Link)</label>
-                                            <input type="text" name="fb" class="form-control" required/>
-                                        </div>
-                                        <div class="col-12">
-                                            <label class="form-label">Instagram - Use (Full Link)</label>
-                                            <input type="text" name="insta" class="form-control" required/>
+                                            <label class="form-label">Linkedin - Use (Full Link)</label>
+                                            <input type="text" name="link" class="form-control" required/>
                                         </div>
                                         <div class="col-12">
                                             <label class="form-label">WhatsApp - Use (Number Only)</label>

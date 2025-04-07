@@ -4,7 +4,7 @@
 <div class="preloader">
     <div class="loading-container">
         <div class="loading"></div>
-        <div id="loading-icon"><img src="assets/images/logo.png" alt="Preloader" /></div>
+        <div id="loading-icon"><img src="assets/logo.png" alt="Preloader" /></div>
     </div>
 </div>
 <!-- Preloader End -->
@@ -15,8 +15,8 @@
         <nav class="container">
             <div class="navbar navbar-expand-lg">
                 <!-- Logo Start -->
-                <a class="navbar-brand" href="index.php" style="font-size: medium; color: #FFF;">
-                    <img src="assets/logo.png" class="me-2" alt="Logo" />SATHYA COATINGS
+                <a class="navbar-brand" href="index.php">
+                    <img src="assets/sathya_logo.png" class="me-2" style="width: 18rem;" alt="Logo" />
                 </a>
                 <!-- Logo End -->
 
@@ -27,7 +27,7 @@
                             <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.php">About Us</a></li>
                             <li class="nav-item submenu">
-                                <a class="nav-link" href="#">Turn Key Services</a>
+                                <a class="nav-link" href="services.php" onclick="window.location.href='services.php'; return false;">Turn Key Solution</a>
                                 <ul>
                                     <?php
                                         $conn = Database::getConnect();
@@ -35,42 +35,22 @@
                                         foreach ($cate as $c) {
                                             if ($c['page'] === 'service') {
                                     ?>
-                                    <li class="nav-item submenu">
-                                        <a class="nav-link" href="#"><?= $c['category'] ?></a>
-                                        <ul>
-                                            <?php
-                                                $sub = Operations::getCategorySub($c['category'], $conn);
-                                                foreach ($sub as $s) {
-                                            ?>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="services.php?data=<?= $s['category'] ?>"><?= $s['category'] ?></a>
-                                            </li>
-                                            <?php } ?>
-                                        </ul>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="services.php?data=<?= urlencode($c['category']) ?>"><?= $c['category'] ?></a>
                                     </li>
                                     <?php } } ?>
                                 </ul>
                             </li>
                             <li class="nav-item submenu">
-                                <a class="nav-link" href="projects.php">Products</a>
+                                <a class="nav-link" href="projects.php" onclick="window.location.href='projects.php'; return false;">Products</a>
                                 <ul>
                                     <?php
                                         $cate = Operations::getCCate($conn);
                                         foreach ($cate as $c) {
                                             if ($c['page'] === 'product') {
                                     ?>
-                                    <li class="nav-item submenu">
-                                        <a class="nav-link" href="#"><?= $c['category'] ?></a>
-                                        <ul>
-                                            <?php
-                                                $sub = Operations::getCategorySub($c['category'], $conn);
-                                                foreach ($sub as $s) {
-                                            ?>
-                                            <li class="nav-item">
-                                                <a class="nav-link" href="projects.php?data=<?= $s['category'] ?>"><?= $s['category'] ?></a>
-                                            </li>
-                                            <?php } ?>
-                                        </ul>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="projects.php?data=<?= urlencode($c['category']) ?>"><?= $c['category'] ?></a>
                                     </li>
                                     <?php } } ?>
                                 </ul>
